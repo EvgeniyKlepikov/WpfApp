@@ -22,15 +22,15 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="textBox" Grid.ColumnSpan="4" Background="White" Margin="5" Text="0"
-                 HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Padding="5"/>
-        <Button Grid.Row="1" Grid.Column="0" Margin="5" Content="C"/>
+                 HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Padding="5" IsReadOnly="True"/>
+        <Button Grid.Row="1" Grid.Column="0" Margin="5" Content="C" Click="ButtonClear_Click"/>
         <Button Grid.Row="1" Grid.Column="1" Margin="5" Content="&lt;-"/>
-        <Button Grid.Row="1" Grid.Column="2" Margin="5" Content="*"/>
-        <Button Grid.Row="1" Grid.Column="3" Margin="5" Content="/"/>
+        <Button Grid.Row="1" Grid.Column="2" Margin="5" Content="*" Click="ButtonOperation_Click"/>
+        <Button Grid.Row="1" Grid.Column="3" Margin="5" Content="/" Click="ButtonOperation_Click"/>
         <Button Grid.Row="2" Grid.Column="0" Margin="5" Content="7" Click="ButtonNumber_Click"/>
         <Button Grid.Row="2" Grid.Column="1" Margin="5" Content="8" Click="ButtonNumber_Click"/>
         <Button Grid.Row="2" Grid.Column="2" Margin="5" Content="9" Click="ButtonNumber_Click"/>
-        <Button Grid.Row="2" Grid.Column="3" Margin="5" Content="-"/>
+        <Button Grid.Row="2" Grid.Column="3" Margin="5" Content="-" Click="ButtonOperation_Click"/>
         <Button Grid.Row="3" Grid.Column="0" Margin="5" Content="4" Click="ButtonNumber_Click"/>
         <Button Grid.Row="3" Grid.Column="1" Margin="5" Content="5" Click="ButtonNumber_Click"/>
         <Button Grid.Row="3" Grid.Column="2" Margin="5" Content="6" Click="ButtonNumber_Click"/>
@@ -38,8 +38,8 @@
         <Button Grid.Row="4" Grid.Column="0" Margin="5" Content="1" Click="ButtonNumber_Click"/>
         <Button Grid.Row="4" Grid.Column="1" Margin="5" Content="2" Click="ButtonNumber_Click"/>
         <Button Grid.Row="4" Grid.Column="2" Margin="5" Content="3" Click="ButtonNumber_Click"/>
-        <Button Grid.Row="4" Grid.Column="3" Margin="5" Content="=" Grid.RowSpan="2"/>
+        <Button Grid.Row="4" Grid.Column="3" Margin="5" Content="=" Grid.RowSpan="2" Click="ButtonEnter_Click"/>
         <Button Grid.Row="5" Grid.Column="0" Margin="5" Content="0" Grid.ColumnSpan="2"/>
-        <Button Grid.Row="5" Grid.Column="2" Margin="5" Content=","/>
+        <Button Grid.Row="5" Grid.Column="2" Margin="5" Content="," Click="ButtonPoint_Click"/>
     </Grid>
 </Window>
