@@ -67,5 +67,13 @@ namespace WpfAppLaba1
             operation = '\0';
             textBox.Text = "0";
         }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBox.Text.Length > 0)
+            {
+                textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1);
+            }
+        }
     }
 }
