@@ -22,7 +22,8 @@ namespace WpfAppLaba2
             InitializeComponent();
             datePickerDOB.SelectedDate = DateTime.Now;
             datePickerISS.SelectedDate = DateTime.Now;
-            datePickerEXP.SelectedDate = DateTime.Now;  
+            datePickerEXP.SelectedDate = DateTime.Now;
+            //comboBox.Items.Add
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -43,7 +44,11 @@ namespace WpfAppLaba2
             driver.Dob = (DateTime)datePickerDOB.SelectedDate;
             driver.Iss = (DateTime)datePickerISS.SelectedDate;
             driver.Exp = (DateTime)datePickerEXP.SelectedDate;
-
+            if(radioButtonMale.IsChecked == true) { driver.Gender = GENDER.male; }
+            if (radioButtonFemale.IsChecked == true) { driver.Gender = GENDER.female; }
+            if (radioButtonVariant.IsChecked == true) { driver.Gender = GENDER.variant; }
+            driver.Donor = checkBoxDonor.IsChecked == true;
+            driver.Hgt = slider.Value;
 
             MessageBox.Show(driver.ToString());
         }

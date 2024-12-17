@@ -43,7 +43,7 @@ namespace WpfAppLaba2
 
         public override string? ToString()
         {
-            return $"{Number} {Class1} from {Iss:d} to {Exp:d}. {Name}, {Gender} Dob({Dob:d}). {Address}. Height {Hgt}. Eyes {Eyes}. " +
+            return $"{Number} {Class1} from {Iss:d} to {Exp:d}. {Name}, {Gender} Dob({Dob:d}). {Address}. Height {Hgt:0}. Eyes {Eyes}. " +
                 $"{(Donor ? "Donor" : "Not donor")}";
         }
     }

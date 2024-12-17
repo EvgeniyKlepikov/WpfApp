@@ -60,12 +60,12 @@
         </GroupBox>
         <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="10">
             <Label Content="Eyes" Margin="20 2"/>
-            <ComboBox Width="150" Margin="5"/>
+            <ComboBox Name="comboBox" Width="150" Margin="5"/>
         </StackPanel>
-        <CheckBox Content="Organ donor" Grid.Row="6" Margin="30 15"/>
+        <CheckBox x:Name="checkBoxDonor" Content="Organ donor" Grid.Row="6" Margin="30 15"/>
         <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Margin="10">
             <Label Content="HGT" Margin="10 2"/>
-            <Slider Width="170" Minimum="140" Maximum="250" Value="175" TickPlacement="TopLeft" TickFrequency="10"
+            <Slider x:Name="slider" Width="170" Minimum="140" Maximum="250" Value="175" TickPlacement="TopLeft" TickFrequency="10"
                     AutoToolTipPlacement="BottomRight"/>
         </StackPanel>
         <Button Grid.Row="7" Margin="40 10" Content="Save" Click="ButtonSave_Click"/>
