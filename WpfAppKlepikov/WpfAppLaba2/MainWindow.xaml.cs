@@ -16,9 +16,36 @@ namespace WpfAppLaba2
     /// </summary>
     public partial class MainWindow : Window
     {
+        Driver driver = new Driver();
         public MainWindow()
         {
             InitializeComponent();
+            datePickerDOB.SelectedDate = DateTime.Now;
+            datePickerISS.SelectedDate = DateTime.Now;
+            datePickerEXP.SelectedDate = DateTime.Now;  
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            driver.Name = textBoxName.Text;
+            int temp;
+            Int32.TryParse(textBoxNumber.Text, out temp);
+            driver.Number = temp;
+            driver.Address = textBoxAddress.Text;
+            if(textBoxClass.Text.Length > 0)
+            {
+                driver.Class1 = textBoxClass.Text[0];
+            }
+            else
+            {
+                driver.Class1 = 'A';
+            }
+            driver.Dob = (DateTime)datePickerDOB.SelectedDate;
+            driver.Iss = (DateTime)datePickerISS.SelectedDate;
+            driver.Exp = (DateTime)datePickerEXP.SelectedDate;
+
+
+            MessageBox.Show(driver.ToString());
         }
     }
 }
