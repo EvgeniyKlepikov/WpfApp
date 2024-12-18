@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace WpfAppLaba3
 {
-    enum GENDER { male, female, variant };
-    enum COLOREYES { brown, green, blue, gray, black };
+    public enum GENDER { male, female, variant };
+    public enum COLOREYES { brown, green, blue, gray, black };
 
-    public class Driver : INotifyPropertyChanged
+    public class Driver : INotifyPropertyChanged, IDataErrorInfo
     {
         int number;
         char class1;
@@ -28,6 +28,22 @@ namespace WpfAppLaba3
 
         public Driver()
         {
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = string.Empty;
+                switch(columnName)
+                {
+                    case "Class1":
+                        if (Class1 < 'A' || Class1 > 'E')
+                            error = "Неверная категория";
+                        break;
+                }
+                return error;
+            }
         }
 
         public int Number
@@ -111,9 +127,35 @@ namespace WpfAppLaba3
                 OnPropertyChanged(nameof(donor));
             } 
         }
-        public string UriImage { get => uriImage; set => uriImage = value; }
-        internal GENDER Gender { get => gender; set => gender = value; }
-        internal COLOREYES Eyes { get => eyes; set => eyes = value; }
+        public string UriImage
+        {
+            get => uriImage;
+            set
+            {
+                uriImage = value;
+                OnPropertyChanged(nameof(uriImage));
+            }
+        }
+        public GENDER Gender
+        {
+            get => gender;
+            set
+            {
+                gender = value;
+                OnPropertyChanged(nameof(gender));
+            }
+        }
+        public COLOREYES Eyes
+        {
+            get => eyes;
+            set
+            {
+                eyes = value;
+                OnPropertyChanged(nameof(eyes));
+            }
+        }
+
+        public string Error => throw new NotImplementedException();
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

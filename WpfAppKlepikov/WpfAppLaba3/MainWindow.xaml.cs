@@ -109,8 +109,8 @@ namespace WpfAppLaba3
             driver.Gender = GENDER.variant;
             driver.Eyes = COLOREYES.brown;
             driver.UriImage = "Images/man.jpg";
-            driver.Dob = new DateTime(1968, 5, 1);
-            driver.Exp = new DateTime(2038, 10, 22);
+            driver.Dob = new DateTime(1999, 9, 15);
+            driver.Exp = new DateTime(2028, 1, 1);
 
         }
 

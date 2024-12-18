@@ -3,9 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:WpfAppLaba3"
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="800" FontSize="20">
+    <Window.Resources>
+        <local:EnumGenderConverter x:Key="genderConverter"/>
+        <local:ImageConverter x:Key="imageConverter"/>
+        <ObjectDataProvider x:Key="EyesFromEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:COLOREYES"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid x:Name="grid">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/background.jpg"/>
@@ -27,7 +37,7 @@
         </Grid.ColumnDefinitions>
         <Label Content="Drivers's LICENSE" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                Foreground="White" FontFamily="Georgia" FontSize="36" FontWeight="ExtraBlack"/>
-        <Image x:Name="image" Source="/Images/red-cross.png" Grid.RowSpan="6" Margin="20" MouseDown="Image_MouseDown"/>
+        <Image x:Name="image" Source="{Binding Path=UriImage, Converter={StaticResource imageConverter}}" Grid.RowSpan="6" Margin="20" MouseDown="Image_MouseDown"/>
         <TextBox x:Name="textBoxName" Text="{Binding Path=Name}" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="26" FontWeight="Bold"
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBox x:Name="textBoxNumber" Text="{Binding Number}" Grid.Row="1" Grid.Column="2" Margin="10" FontSize="26" FontWeight="Bold"
@@ -36,8 +46,17 @@
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Margin="10">
             <Label Content="CLASS" Margin="20 2"/>
-            <TextBox x:Name="textBoxClass" Text="{Binding Class1}" Width="50" Margin="20 2" FontSize="26" FontWeight="Bold"
-                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="textBoxClass" Width="50" Margin="20 2" FontSize="26" FontWeight="Bold"
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <TextBox.Text>
+                    <Binding Path="Class1">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                
+            </TextBox>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="10">
             <Label Content="DOB" Margin="20 2"/>
@@ -53,14 +72,25 @@
         </StackPanel>
         <GroupBox Grid.Row="4" Grid.Column="1" Header="Sex">
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="radioButtonMale" Content="male" Margin="5 2"/>
-                <RadioButton x:Name="radioButtonFemale" Content="female" Margin="5 2"/>
-                <RadioButton x:Name="radioButtonVariant" Content="variant" Margin="5 2"/>
+                <RadioButton x:Name="radioButtonMale"
+                             IsChecked="{Binding Path=Gender, Converter={StaticResource genderConverter},
+                    ConverterParameter={x:Static local:GENDER.male}}"
+                             Content="male" Margin="5 2"/>
+                <RadioButton x:Name="radioButtonFemale"
+                             IsChecked="{Binding Path=Gender, Converter={StaticResource genderConverter},
+                    ConverterParameter={x:Static local:GENDER.female}}"
+                             Content="female" Margin="5 2"/>
+                <RadioButton x:Name="radioButtonVariant" 
+                             IsChecked="{Binding Path=Gender, Converter={StaticResource genderConverter},
+                    ConverterParameter={x:Static local:GENDER.variant}}"
+                             Content="variant" Margin="5 2"/>
             </StackPanel>
         </GroupBox>
         <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="10">
             <Label Content="Eyes" Margin="20 2"/>
-            <ComboBox Name="comboBox" Width="150" Margin="5"/>
+            <ComboBox Name="comboBox" ItemsSource="{Binding Source={StaticResource EyesFromEnum}}"
+                      SelectedValue="{Binding Eyes}"
+                      Width="150" Margin="5"/>
         </StackPanel>
         <CheckBox x:Name="checkBoxDonor" IsChecked="{Binding Donor}" Content="Organ donor" Grid.Row="6" Margin="30 15"/>
         <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Margin="10">
