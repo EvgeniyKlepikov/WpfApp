@@ -46,6 +46,7 @@ namespace WpfAppLaba2
             {
                 driver.Class1 = 'A';
             }
+            //driver.Eyes = comboBox.SelectedValuePath;
             driver.Dob = (DateTime)datePickerDOB.SelectedDate;
             driver.Iss = (DateTime)datePickerISS.SelectedDate;
             driver.Exp = (DateTime)datePickerEXP.SelectedDate;
@@ -59,7 +60,35 @@ namespace WpfAppLaba2
 
         private void ButtonLoad_Click(object sender, RoutedEventArgs e)
         {
+            driver.Name = "Severus Snape";
+            driver.Class1 = 'A';
+            driver.Address = "Hogwarts";
+            driver.Number = 0123456789;
+            driver.Hgt = 192;
+            driver.Gender = GENDER.variant;
+            driver.Eyes = COLOREYES.gray;
+            driver.Dob = new DateTime(1968, 5, 1);
+            driver.Iss = new DateTime(2008, 10, 22);
+            driver.Exp = new DateTime(2038, 10, 22);
+            driver.Donor = true;
+            driver.UriImage = "Images/man.jpg";
 
+            textBoxName.Text = driver.Name;
+            textBoxClass.Text = driver.Class1.ToString();
+            textBoxAddress.Text = driver.Address;
+            textBoxNumber.Text = driver.Number.ToString();
+            slider.Value = driver.Hgt;
+            if(driver.Gender == GENDER.male) radioButtonMale.IsChecked = true;
+            if(driver.Gender == GENDER.female) radioButtonFemale.IsChecked = true;
+            if(driver.Gender == GENDER.variant) radioButtonVariant.IsChecked = true;
+            //comboBox.SelectedValue = driver.Eyes;
+            comboBox.SelectedItem = driver.Eyes;
+            datePickerDOB.SelectedDate = driver.Dob;
+            datePickerISS.SelectedDate = driver.Iss;
+            datePickerEXP.SelectedDate = driver.Exp;
+            checkBoxDonor.IsChecked = driver.Donor;
+            image.Source = new BitmapImage(new Uri(driver.UriImage, UriKind.RelativeOrAbsolute));
+            //MessageBox.Show(driver.ToString());
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
@@ -71,6 +100,25 @@ namespace WpfAppLaba2
                 driver.UriImage = dialog.FileName;
                 image.Source = new BitmapImage(new Uri(dialog.FileName, UriKind.RelativeOrAbsolute));
             }
+        }
+
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxName.Text = null;
+            textBoxClass.Text = null;
+            textBoxAddress.Text = null;
+            textBoxNumber.Text = null;
+            slider.Value = driver.Hgt;
+            if (driver.Gender == GENDER.male) radioButtonMale.IsChecked = true;
+            if (driver.Gender == GENDER.female) radioButtonFemale.IsChecked = true;
+            if (driver.Gender == GENDER.variant) radioButtonVariant.IsChecked = true;
+            comboBox.SelectedIndex = 0;
+            datePickerDOB.SelectedDate = DateTime.Now;
+            datePickerISS.SelectedDate = DateTime.Now;
+            datePickerEXP.SelectedDate = DateTime.Now;
+            checkBoxDonor.IsChecked = driver.Donor;
+            image.Source = new BitmapImage(new Uri(driver.UriImage, UriKind.RelativeOrAbsolute));
+
         }
     }
 }

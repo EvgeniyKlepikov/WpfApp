@@ -70,6 +70,6 @@
         </StackPanel>
         <Button Grid.Row="7" Margin="40 10" Content="Save" Click="ButtonSave_Click"/>
         <Button Grid.Row="7" Grid.Column="1" Margin="40 10" Content="Load" Click="ButtonLoad_Click"/>
-        <Button Grid.Row="7" Grid.Column="2" Margin="40 10" Content="Clear"/>
+        <Button Grid.Row="7" Grid.Column="2" Margin="40 10" Content="Clear" Click="ButtonClear_Click"/>
     </Grid>
 </Window>
