@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfAppLaba3"
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="800" FontSize="20">
-    <Grid>
+    <Grid x:Name="grid">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/background.jpg"/>
         </Grid.Background>
@@ -28,28 +28,28 @@
         <Label Content="Drivers's LICENSE" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                Foreground="White" FontFamily="Georgia" FontSize="36" FontWeight="ExtraBlack"/>
         <Image x:Name="image" Source="/Images/red-cross.png" Grid.RowSpan="6" Margin="20" MouseDown="Image_MouseDown"/>
-        <TextBox x:Name="textBoxName" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="26" FontWeight="Bold"
+        <TextBox x:Name="textBoxName" Text="{Binding Path=Name}" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="26" FontWeight="Bold"
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="textBoxNumber" Grid.Row="1" Grid.Column="2" Margin="10" FontSize="26" FontWeight="Bold"
+        <TextBox x:Name="textBoxNumber" Text="{Binding Number}" Grid.Row="1" Grid.Column="2" Margin="10" FontSize="26" FontWeight="Bold"
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="textBoxAddress" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="26" FontWeight="Bold"
+        <TextBox x:Name="textBoxAddress" Text="{Binding Address}" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="26" FontWeight="Bold"
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Margin="10">
             <Label Content="CLASS" Margin="20 2"/>
-            <TextBox x:Name="textBoxClass" Width="50" Margin="20 2" FontSize="26" FontWeight="Bold"
+            <TextBox x:Name="textBoxClass" Text="{Binding Class1}" Width="50" Margin="20 2" FontSize="26" FontWeight="Bold"
                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="10">
             <Label Content="DOB" Margin="20 2"/>
-            <DatePicker Name="datePickerDOB" Margin="10 2"/>
+            <DatePicker Name="datePickerDOB" SelectedDate="{Binding Dob}" Margin="10 2"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" Margin="10">
             <Label Content="ISS" Margin="20 2"/>
-            <DatePicker Name="datePickerISS" Margin="10 2"/>
+            <DatePicker Name="datePickerISS" SelectedDate="{Binding Iss}" Margin="10 2"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal" Margin="10">
             <Label Content="EXP" Margin="20 2"/>
-            <DatePicker Name="datePickerEXP" Margin="10 2"/>
+            <DatePicker Name="datePickerEXP" SelectedDate="{Binding Exp}" Margin="10 2"/>
         </StackPanel>
         <GroupBox Grid.Row="4" Grid.Column="1" Header="Sex">
             <StackPanel Orientation="Horizontal">
@@ -62,10 +62,10 @@
             <Label Content="Eyes" Margin="20 2"/>
             <ComboBox Name="comboBox" Width="150" Margin="5"/>
         </StackPanel>
-        <CheckBox x:Name="checkBoxDonor" Content="Organ donor" Grid.Row="6" Margin="30 15"/>
+        <CheckBox x:Name="checkBoxDonor" IsChecked="{Binding Donor}" Content="Organ donor" Grid.Row="6" Margin="30 15"/>
         <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Margin="10">
             <Label Content="HGT" Margin="10 2"/>
-            <Slider x:Name="slider" Width="170" Minimum="140" Maximum="250" Value="175" TickPlacement="TopLeft" TickFrequency="10"
+            <Slider x:Name="slider" Width="170" Minimum="140" Maximum="250" Value="{Binding Hgt}" TickPlacement="TopLeft" TickFrequency="10"
                     AutoToolTipPlacement="BottomRight"/>
         </StackPanel>
         <Button Grid.Row="7" Margin="40 10" Content="Save" Click="ButtonSave_Click"/>
