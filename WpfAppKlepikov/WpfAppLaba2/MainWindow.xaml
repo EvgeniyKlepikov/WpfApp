@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
         <Label Content="Drivers's LICENSE" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                Foreground="White" FontFamily="Georgia" FontSize="36" FontWeight="ExtraBlack"/>
-        <Image Source="/Images/red-cross.png" Grid.Row="1" Grid.RowSpan="6" Margin="20"/>
+        <Image x:Name="image" Source="/Images/red-cross.png" Grid.RowSpan="6" Margin="20" MouseDown="Image_MouseDown"/>
         <TextBox x:Name="textBoxName" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="26" FontWeight="Bold"
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBox x:Name="textBoxNumber" Grid.Row="1" Grid.Column="2" Margin="10" FontSize="26" FontWeight="Bold"
@@ -69,7 +69,7 @@
                     AutoToolTipPlacement="BottomRight"/>
         </StackPanel>
         <Button Grid.Row="7" Margin="40 10" Content="Save" Click="ButtonSave_Click"/>
-        <Button Grid.Row="7" Grid.Column="1" Margin="40 10" Content="Load"/>
+        <Button Grid.Row="7" Grid.Column="1" Margin="40 10" Content="Load" Click="ButtonLoad_Click"/>
         <Button Grid.Row="7" Grid.Column="2" Margin="40 10" Content="Clear"/>
     </Grid>
 </Window>

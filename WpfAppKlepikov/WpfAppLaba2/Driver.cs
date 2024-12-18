@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WpfAppLaba2
 {
     enum GENDER { male, female, variant};
-    enum COLOREYES { brown, green, blue, gray};
+    enum COLOREYES { brown, green, blue, gray, black};
 
     public class Driver
     {
@@ -43,8 +43,8 @@ namespace WpfAppLaba2
 
         public override string? ToString()
         {
-            return $"{Number} {Class1} from {Iss:d} to {Exp:d}. {Name}, {Gender} Dob({Dob:d}). {Address}. Height {Hgt:0}. Eyes {Eyes}. " +
-                $"{(Donor ? "Donor" : "Not donor")}";
+            return $"N{Number} {Class1} from {Iss:d} to {Exp:d}.\n{Name}, {Gender} Dob({Dob:d}). {Address}. Height {Hgt:0}.\nEyes {Eyes}. " +
+                $"{(Donor ? "Donor" : "Not donor")}\n{UriImage}";
         }
     }
 }

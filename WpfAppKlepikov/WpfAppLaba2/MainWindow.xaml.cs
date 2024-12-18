@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,7 +24,11 @@ namespace WpfAppLaba2
             datePickerDOB.SelectedDate = DateTime.Now;
             datePickerISS.SelectedDate = DateTime.Now;
             datePickerEXP.SelectedDate = DateTime.Now;
-            //comboBox.Items.Add
+            foreach(COLOREYES color in Enum.GetValues(typeof(COLOREYES)))
+            {
+                comboBox.Items.Add(color);
+            }
+            comboBox.SelectedIndex = 0;
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -49,8 +54,23 @@ namespace WpfAppLaba2
             if (radioButtonVariant.IsChecked == true) { driver.Gender = GENDER.variant; }
             driver.Donor = checkBoxDonor.IsChecked == true;
             driver.Hgt = slider.Value;
-
             MessageBox.Show(driver.ToString());
+        }
+
+        private void ButtonLoad_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Файлы (jpg)|*.jpg|Все файлы|*.*";
+            if (dialog.ShowDialog() == true)
+            {
+                driver.UriImage = dialog.FileName;
+                image.Source = new BitmapImage(new Uri(dialog.FileName, UriKind.RelativeOrAbsolute));
+            }
         }
     }
 }
