@@ -38,8 +38,10 @@ namespace WpfAppLaba3
                 switch(columnName)
                 {
                     case "Class1":
-                        if (Class1 < 'A' || Class1 > 'E')
-                            error = "Неверная категория";
+                        if (Class1 < 'A' || Class1 > 'E') error = "Неверная категория";
+                        break;
+                    case "Exp":
+                        if (Exp < DateTime.Now) error = "Закончен срок действия";
                         break;
                 }
                 return error;
