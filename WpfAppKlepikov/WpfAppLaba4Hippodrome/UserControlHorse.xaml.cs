@@ -24,7 +24,52 @@ namespace WpfAppLaba4Hippodrome
         public UserControlHorse(int speed)
         {
             InitializeComponent();
-            horse = new Horse(speed)
+            horse = new Horse(speed);
+            this.DataContext = horse;
+
+            Binding bindingSpeed = new Binding("Speed");
+            textBlockSpeed.SetBinding(TextBlock.TextProperty, bindingSpeed);
+
+            Binding bindingPosition = new Binding("Position");
+            textBlockPosition.SetBinding(TextBlock.TextProperty, bindingPosition);
+
+            this.SetBinding(Canvas.LeftProperty, new Binding("X"));
         }
+        public int GetSpeed()
+        {
+            return horse.Speed;
+        }
+        public void SetSpeed(int speed)
+        {
+            horse.Speed = speed;
+        }
+        public void SetPosition(int position) 
+        {
+            horse.Position = position;
+        }
+        public float X 
+        { 
+            get
+            {
+                return horse.X;
+            } 
+            set
+            {
+                horse.X = value;
+            } 
+
+        }
+        public bool IsFinish
+        {
+            get
+            {
+                return horse.IsFinish;
+            }
+            set
+            {
+                horse.IsFinish = value;
+            }
+        }
+
     }
 }

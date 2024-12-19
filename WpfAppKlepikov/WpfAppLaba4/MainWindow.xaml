@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppLaba4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1225">
+        Title="MainWindow" Height="500" Width="1225">
     <Grid x:Name="grid"  Background="LightGreen" ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -13,7 +13,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="Start" Width="200" Grid.Row="3" Margin="100 20 500 20"/>
-        <Button Content="Reset" Width="200" Grid.Row="3" Margin="500 20 100 20"/>
+        <Button Content="Start" Width="200" Grid.Row="3" Margin="100 20 500 20" Click="ButtonStart_Click"/>
+        <Button Content="Reset" Width="200" Grid.Row="3" Margin="500 20 100 20" Click="ButtonReset_Click"/>
     </Grid>
 </Window>
