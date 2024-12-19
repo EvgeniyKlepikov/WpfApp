@@ -43,6 +43,12 @@ namespace WpfAppLaba3
                     case "Exp":
                         if (Exp < DateTime.Now) error = "Закончен срок действия";
                         break;
+                    case "Dob":
+                        if (Dob.Year < 1900 || Dob.Year > (DateTime.Now.Year - 16)) error = "Возраст меньше 16. Либо больше 100";
+                        break;
+                    case "Iss":
+                        if (Iss > DateTime.Now || (Iss.Year - Dob.Year) < 16) error = "Некорректная дата выдачи.";
+                        break;
                 }
                 return error;
             }

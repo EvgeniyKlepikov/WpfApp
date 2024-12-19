@@ -84,11 +84,27 @@
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="10">
             <Label Content="DOB" Margin="20 2"/>
-            <DatePicker Name="datePickerDOB" SelectedDate="{Binding Dob}" Margin="10 2"/>
+            <DatePicker Name="datePickerDOB" Margin="10 2" Validation.ErrorTemplate="{StaticResource validationFailed}">
+                <DatePicker.SelectedDate>
+                    <Binding Path="Dob">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" Margin="10">
             <Label Content="ISS" Margin="20 2"/>
-            <DatePicker Name="datePickerISS" SelectedDate="{Binding Iss}" Margin="10 2"/>
+            <DatePicker Name="datePickerISS" Margin="10 2" Validation.ErrorTemplate="{StaticResource validationFailed}">
+                <DatePicker.SelectedDate>
+                    <Binding Path="Iss">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal" Margin="10">
             <Label Content="EXP" Margin="20 2"/>
