@@ -19,6 +19,8 @@ namespace WpfAppLaba4
     {
         Canvas[] canvases = new Canvas[3];
         WpfAppLaba4Hippodrome.UserControlHorse[] horses = new WpfAppLaba4Hippodrome.UserControlHorse[3];
+        WpfAppLaba4Hippodrome.UserControlFinish[] finishes = new WpfAppLaba4Hippodrome.UserControlFinish[3];
+        WpfAppLaba4Hippodrome.UserControlPosition[] positions = new WpfAppLaba4Hippodrome.UserControlPosition[3];
         DispatcherTimer timer, timerUpdateSpeed;
         Random Random = new Random();
         bool flStart = false;
@@ -47,6 +49,13 @@ namespace WpfAppLaba4
             for (int i = 0; i < canvases.Length; i++)
             {
                 canvases[i].Children.Clear();
+                finishes[i] = new WpfAppLaba4Hippodrome.UserControlFinish();
+                positions[i] = new WpfAppLaba4Hippodrome.UserControlPosition();
+                canvases[i].Children.Add(positions[i]);
+                Canvas.SetLeft(positions[i], 50);
+                canvases[i].Children.Add(finishes[i]);
+                Canvas.SetRight(finishes[i], 0);
+
                 horses[i] = new WpfAppLaba4Hippodrome.UserControlHorse(Random.Next(20, 50));
                 canvases[i].Children.Add(horses[i]);
             }
@@ -59,7 +68,8 @@ namespace WpfAppLaba4
         {
             for (int i = 0; i < canvases.Length; i++)
             {
-                horses[i].SetSpeed(Random.Next(30, 80));
+                if (horses[i].IsFinish == false)
+                    horses[i].SetSpeed(Random.Next(30, 80));
             }
         }
 
@@ -93,13 +103,24 @@ namespace WpfAppLaba4
         {
             for (int i = 0; i < canvases.Length; i++)
             {
+                if (horses[i].IsFinish)
+                    continue;
                 int k = 0; // Позиция в забеге
                 for (int j = 0; j < canvases.Length; j++)
                 {
-                    if (horses[i].X <= horses[j].X) k++;
+                    if (horses[j].IsFinish || horses[i].X <= horses[j].X) k++;
                 }
-                horses[i].SetPosition(k);
-                horses[i].X += horses[i].GetSpeed() / 1500.0f;
+                if (horses[i].X < 1100) // еще не финишировала
+                {
+                    horses[i].SetPosition(k);
+                    horses[i].X += horses[i].GetSpeed() / 1500.0f;
+                }
+                else // лошадка на финише в первый раз
+                {
+                    horses[i].SetPosition(k);
+                    positions[i].SetPosition(k);
+                    horses[i].IsFinish = true;
+                }
             }
         }
     }
