@@ -28,9 +28,11 @@ namespace WpfAppLaba4Hippodrome
             this.DataContext = horse;
 
             Binding bindingSpeed = new Binding("Speed");
+            bindingSpeed.Converter = new SpeedToString();
             textBlockSpeed.SetBinding(TextBlock.TextProperty, bindingSpeed);
 
             Binding bindingPosition = new Binding("Position");
+            bindingPosition.Converter = new PositionToString();
             textBlockPosition.SetBinding(TextBlock.TextProperty, bindingPosition);
 
             this.SetBinding(Canvas.LeftProperty, new Binding("X"));
@@ -71,5 +73,29 @@ namespace WpfAppLaba4Hippodrome
             }
         }
 
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(textBlockSpeed.Visibility == Visibility.Visible)
+            {
+                textBlockSpeed.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                textBlockSpeed.Visibility= Visibility.Visible;
+            }
+        }
+
+        private void Image_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (textBlockPosition.Visibility == Visibility.Visible)
+            {
+                textBlockPosition.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                textBlockPosition.Visibility = Visibility.Visible;
+            }
+
+        }
     }
 }

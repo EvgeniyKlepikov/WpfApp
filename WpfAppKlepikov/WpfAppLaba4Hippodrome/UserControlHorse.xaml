@@ -12,8 +12,8 @@
             <RowDefinition Height="16px"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Name="textBlockSpeed" FontSize="18"/>
-        <TextBlock x:Name="textBlockPosition" Grid.Row="1" FontSize="12" Foreground="Red"/>
-        <Image Source="/WpfAppLaba4Hippodrome;component/Resources/horse.jpg" Grid.Row="2" Width="100"/>
+        <TextBlock Name="textBlockSpeed" FontSize="18" Visibility="Hidden"/>
+        <TextBlock x:Name="textBlockPosition" Grid.Row="1" FontSize="12" Foreground="Red" Visibility="Hidden"/>
+        <Image Source="/WpfAppLaba4Hippodrome;component/Resources/horse.jpg" Grid.Row="2" Width="100" MouseLeftButtonDown="Image_MouseLeftButtonDown" MouseRightButtonDown="Image_MouseRightButtonDown"/>
     </Grid>
 </UserControl>
