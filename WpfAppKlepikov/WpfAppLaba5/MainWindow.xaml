@@ -19,6 +19,6 @@
         <StatusBar DockPanel.Dock="Bottom" Height="35" Background="LightCyan">
             
         </StatusBar>
-        <Canvas x:Name="canvas" Background="Beige"/>
+        <Canvas x:Name="canvas" Background="Beige" MouseDown="canvas_MouseDown"/>
     </DockPanel>
 </Window>

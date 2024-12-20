@@ -16,6 +16,7 @@ namespace WpfAppLaba5
     /// </summary>
     public partial class MainWindow : Window
     {
+        Shape shape;
         public MainWindow()
         {
             InitializeComponent();
@@ -24,7 +25,15 @@ namespace WpfAppLaba5
         private void MenuItemShape_Click(object sender, RoutedEventArgs e)
         {
             WindowShape windowShape = new WindowShape();
-            windowShape.Show();
+            if(windowShape.ShowDialog() == false) return;
+            shape = windowShape.GetShape();
+            //MessageBox.Show(shape.ToString());
+        }
+
+        private void canvas_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(shape == null) return;
+            shape.Draw(canvas, e.GetPosition(canvas));
         }
     }
 }

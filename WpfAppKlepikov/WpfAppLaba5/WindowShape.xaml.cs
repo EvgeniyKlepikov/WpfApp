@@ -19,19 +19,26 @@ namespace WpfAppLaba5
     /// </summary>
     public partial class WindowShape : Window
     {
+        Shape shape;
         public WindowShape()
         {
             InitializeComponent();
+            shape = new Shape(100, 100, 1, Colors.White, Colors.Black);
+            grid.DataContext = shape;
         }
 
         private void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
-
+            this.DialogResult = true;
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            this.DialogResult= false;
+        }
+        public Shape GetShape()
+        {
+            return shape;
         }
     }
 }
