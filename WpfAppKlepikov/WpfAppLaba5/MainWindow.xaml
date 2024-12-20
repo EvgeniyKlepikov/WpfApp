@@ -10,15 +10,18 @@
         <Menu DockPanel.Dock="Top" Height="35" Background="LightSteelBlue">
             <MenuItem Header="Shape" Click="MenuItemShape_Click"/>
             <MenuItem Header="File">
-                <MenuItem Header="Save"/>
-                <MenuItem Header="Load"/>
+                <MenuItem x:Name="menuSave"  Header="Save" Command="Save"/>
+                <MenuItem x:Name="menuLoad" Header="Load" Command="Open"/>
             </MenuItem>
-            <MenuItem Header="Help"/>
+            <MenuItem x:Name="menuitemHelp" Header="Help" Command="Help"/>
             <MenuItem Header="Exit"/>
         </Menu>
+        <ToolBar DockPanel.Dock="Top" Height="40">
+            <Button x:Name="buttonHelp" Command="Help"  Content="H" Width="40"/>
+        </ToolBar>
         <StatusBar DockPanel.Dock="Bottom" Height="35" Background="LightCyan">
-            
+            <TextBlock x:Name="textBlock" Width="300"/>
         </StatusBar>
-        <Canvas x:Name="canvas" Background="Beige" MouseDown="canvas_MouseDown"/>
+        <Canvas x:Name="canvas" Background="Beige" MouseDown="canvas_MouseDown" MouseMove="canvas_MouseMove"/>
     </DockPanel>
 </Window>
