@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba4", "WpfAppLaba4\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba4Hippodrome", "WpfAppLaba4Hippodrome\WpfAppLaba4Hippodrome.csproj", "{A84478D6-5B99-42B8-B3D7-62A2B93B6F50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba5", "WpfAppLaba5\WpfAppLaba5.csproj", "{E9B6C68F-6AED-43BE-926A-9CC41BDBDB18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A84478D6-5B99-42B8-B3D7-62A2B93B6F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A84478D6-5B99-42B8-B3D7-62A2B93B6F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A84478D6-5B99-42B8-B3D7-62A2B93B6F50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9B6C68F-6AED-43BE-926A-9CC41BDBDB18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9B6C68F-6AED-43BE-926A-9CC41BDBDB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9B6C68F-6AED-43BE-926A-9CC41BDBDB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9B6C68F-6AED-43BE-926A-9CC41BDBDB18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
