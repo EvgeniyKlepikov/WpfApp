@@ -37,8 +37,14 @@ namespace WpfAppLaba5
             CommandBinding bindingSave = new CommandBinding();
             bindingSave.Command = ApplicationCommands.Save;
             bindingSave.Executed += Save;
+            bindingSave.CanExecute += SaveCanExecute;
             menuSave.CommandBindings.Add(bindingSave);
 
+        }
+
+        private void SaveCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = shape != null;
         }
 
         private void Save(object sender, ExecutedRoutedEventArgs e)
