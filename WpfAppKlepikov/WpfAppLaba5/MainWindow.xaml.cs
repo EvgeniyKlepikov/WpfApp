@@ -20,5 +20,11 @@ namespace WpfAppLaba5
         {
             InitializeComponent();
         }
+
+        private void MenuItemShape_Click(object sender, RoutedEventArgs e)
+        {
+            WindowShape windowShape = new WindowShape();
+            windowShape.Show();
+        }
     }
 }

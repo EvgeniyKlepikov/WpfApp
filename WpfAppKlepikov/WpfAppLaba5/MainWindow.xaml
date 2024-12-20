@@ -8,8 +8,13 @@
         Title="MainWindow" Height="450" Width="800" FontSize="24">
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top" Height="35" Background="LightSteelBlue">
-            
-            
+            <MenuItem Header="Shape" Click="MenuItemShape_Click"/>
+            <MenuItem Header="File">
+                <MenuItem Header="Save"/>
+                <MenuItem Header="Load"/>
+            </MenuItem>
+            <MenuItem Header="Help"/>
+            <MenuItem Header="Exit"/>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom" Height="35" Background="LightCyan">
             
