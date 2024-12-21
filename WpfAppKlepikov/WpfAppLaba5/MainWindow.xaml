@@ -17,7 +17,18 @@
             <MenuItem Header="Exit"/>
         </Menu>
         <ToolBar DockPanel.Dock="Top" Height="40">
-            <Button x:Name="buttonHelp" Command="Help"  Content="H" Width="40"/>
+            <Button x:Name="buttonShape" Click="MenuItemShape_Click" Width="40" BorderBrush="Black">
+                <Image Source="/Images/shape.png"/>
+            </Button>
+            <Button x:Name="buttonSave" Command="Save" Width="40" BorderBrush="Black">
+                <Image Source="/Images/save.png" />
+            </Button>
+            <Button x:Name="buttonLoad" Command="Open" Width="40" BorderBrush="Black">
+                <Image Source="/Images/load.png" />
+            </Button>
+            <Button x:Name="buttonHelp" Command="Help" Width="40" BorderBrush="Black">
+                <Image Source="/Images/help.jpg" />
+            </Button>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom" Height="35" Background="LightCyan">
             <TextBlock x:Name="textBlock" Width="300"/>

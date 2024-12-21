@@ -33,12 +33,14 @@ namespace WpfAppLaba5
             bindingOpen.Command = ApplicationCommands.Open;
             bindingOpen.Executed += Load;
             menuLoad.CommandBindings.Add(bindingOpen);
+            buttonLoad.CommandBindings.Add(bindingOpen);
 
             CommandBinding bindingSave = new CommandBinding();
             bindingSave.Command = ApplicationCommands.Save;
             bindingSave.Executed += Save;
             bindingSave.CanExecute += SaveCanExecute;
             menuSave.CommandBindings.Add(bindingSave);
+            buttonSave.CommandBindings.Add(bindingSave);
 
         }
 
