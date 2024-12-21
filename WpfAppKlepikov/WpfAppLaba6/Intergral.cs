@@ -60,7 +60,7 @@ namespace WpfAppLaba6
             }
         }
 
-        public async IAsyncEnumerable<double> GetDoublesAsync()
+        public async IAsyncEnumerable<(double,double,double)> GetDoublesAsync()
         {
             double h = (B - A) / N;
             double S = 0;
@@ -69,7 +69,7 @@ namespace WpfAppLaba6
                 double x = A + h * i;
                 S += func(x) * h;
                 await Task.Delay(10);
-                yield return (S);
+                yield return (x,S,(double)i/N);
             };
         }
         public override string? ToString()

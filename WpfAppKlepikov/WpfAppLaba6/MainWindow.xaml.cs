@@ -52,10 +52,11 @@ namespace WpfAppLaba6
         {
             listBox.Items.Clear();
             if (intergral == null) return;
-            IAsyncEnumerable<double> data = intergral.GetDoublesAsync();
-            await foreach (var d in data)
+            IAsyncEnumerable<(double,double,double)> data = intergral.GetDoublesAsync();
+            await foreach (var trio in data)
             {
-                listBox.Items.Add($"S = {d:0.00000}");
+                listBox.Items.Add($"x = {trio.Item1:0.00} S = {trio.Item2:0.00000}");
+                pBar.Value = trio.Item3 * 100;
             }
 
         }
