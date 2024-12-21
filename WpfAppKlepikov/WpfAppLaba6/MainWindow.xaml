@@ -3,9 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:thrd="clr-namespace:System.ComponentModel;assembly=System"
         xmlns:local="clr-namespace:WpfAppLaba6"
         mc:Ignorable="d"
         Title="Threads" Height="500" Width="800" FontFamily="Lucida Bright" FontSize="20">
+    <Window.Resources>
+        <thrd:BackgroundWorker x:Key="worker"
+                               DoWork="BackgroundWorker_DoWork"
+                               ProgressChanged="BackgroundWorker_ProgressChanged"
+                               RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted"
+                               WorkerReportsProgress="True"
+         />
+    </Window.Resources>
     <DockPanel Background="#d3c265">
         <ProgressBar x:Name="pBar" Height="40" DockPanel.Dock="Bottom"/>
         <StackPanel>
