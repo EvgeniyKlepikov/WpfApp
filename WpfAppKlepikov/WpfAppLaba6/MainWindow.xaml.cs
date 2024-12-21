@@ -16,9 +16,46 @@ namespace WpfAppLaba6
     /// </summary>
     public partial class MainWindow : Window
     {
+        Intergral intergral;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void buttonParams_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 window1 = new Window1();
+            if (window1.ShowDialog() != true) return;
+            intergral = window1.intergral;
+            //MessageBox.Show(intergral.ToString());
+        }
+
+        private void buttonD_Click(object sender, RoutedEventArgs e)
+        {
+            Calculate();
+        }
+
+        private void buttonW_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonA_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Calculate()
+        {
+            if (intergral == null) return;
+            int n = intergral.N;
+            double h = (intergral.B - intergral.A) / n;
+            double S = 0;
+            for (int i = 0; i <= n; i++)
+            {
+                double x = intergral.A + h * i;
+                S += intergral.func(x) * h;
+            }
+            MessageBox.Show($"S = {S:0.00000}");
         }
     }
 }

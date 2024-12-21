@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:WpfAppLaba6"
         mc:Ignorable="d"
         Title="Threads" Height="500" Width="800" FontFamily="Lucida Bright" FontSize="20">
-    <Grid>
+    <DockPanel Background="#d3c265">
+        <ProgressBar x:Name="pBar" Height="40" DockPanel.Dock="Bottom"/>
+        <StackPanel>
+            <Label Content="Результат:"/>
+            <ListBox x:Name="listBox" Width="500" Height="350" FontSize="12" Grid.Row="1" Background="#e3d275"/>
+            <Label Content="Прогресс:" Grid.Row="2"/>
+        </StackPanel>
+        <StackPanel>
+            <Button x:Name="buttonParams" Background="#623821" Foreground="#d3c265" Content="Параметры" Margin="20" Click="buttonParams_Click"/>
+            <Button x:Name="buttonD" Background="#623821" Foreground="#d3c265" Content="Dispatcher" Margin="20" Click="buttonD_Click"/>
+            <Button x:Name="buttonW" Background="#623821" Foreground="#d3c265" Content="BackgroundWorker" Margin="20" Click="buttonW_Click"/>
+            <Button x:Name="buttonA" Background="#623821" Foreground="#d3c265" Content="async" Margin="20" Click="buttonA_Click"/>
+        </StackPanel>
 
-    </Grid>
+    </DockPanel>
 </Window>
