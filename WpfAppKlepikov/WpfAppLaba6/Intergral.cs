@@ -60,6 +60,18 @@ namespace WpfAppLaba6
             }
         }
 
+        public async IAsyncEnumerable<double> GetDoublesAsync()
+        {
+            double h = (B - A) / N;
+            double S = 0;
+            for (int i = 0; i <= N; i++)
+            {
+                double x = A + h * i;
+                S += func(x) * h;
+                await Task.Delay(10);
+                yield return (S);
+            };
+        }
         public override string? ToString()
         {
             return $"A = {A}, B = {B}, N = {N}";

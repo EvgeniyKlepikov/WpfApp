@@ -48,8 +48,15 @@ namespace WpfAppLaba6
             backgroundWorker.RunWorkerAsync();
         }
 
-        private void buttonA_Click(object sender, RoutedEventArgs e)
+        private async void buttonA_Click(object sender, RoutedEventArgs e)
         {
+            listBox.Items.Clear();
+            if (intergral == null) return;
+            IAsyncEnumerable<double> data = intergral.GetDoublesAsync();
+            await foreach (var d in data)
+            {
+                listBox.Items.Add($"S = {d:0.00000}");
+            }
 
         }
         private void Calculate()
