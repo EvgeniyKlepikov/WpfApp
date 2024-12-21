@@ -22,6 +22,41 @@
         <StatusBar DockPanel.Dock="Bottom" Height="35" Background="LightCyan">
             <TextBlock x:Name="textBlock" Width="300"/>
         </StatusBar>
-        <Canvas x:Name="canvas" Background="Beige" MouseDown="canvas_MouseDown" MouseMove="canvas_MouseMove"/>
+        <Canvas x:Name="canvas" Background="Beige" MouseDown="canvas_MouseDown" MouseMove="canvas_MouseMove">
+            <Rectangle Height="280" Width="450" Canvas.Left="120" Canvas.Top="50">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                        <GradientStop Color="DarkSeaGreen" Offset="0"/>
+                        <GradientStop Color="Aqua" Offset="0.1"/>
+                        <GradientStop Color="DodgerBlue" Offset="0.4"/>
+                        <GradientStop Color="LightGoldenrodYellow" Offset="0.7"/>
+                        <GradientStop Color="Orange" Offset="0.9"/>
+                        <GradientStop Color="Moccasin" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.Triggers>
+                    <EventTrigger RoutedEvent="Rectangle.MouseDown">
+                        <BeginStoryboard>
+                            <!--<Storyboard TargetProperty="Fill.GradientStops[2].Color">
+                                <ColorAnimation To="Red" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+                            </Storyboard>                            
+                        </BeginStoryboard>                        
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseDown">
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="Fill.GradientStops[4].Offset">
+                                <DoubleAnimation To="0.1" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>-->
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="Fill.GradientStops[2].Color" To="Red" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Fill.GradientStops[4].Offset"  To="0.1" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Width"  To="10" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RadiusX"  To="200" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RadiusY"  To="200" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+            </Rectangle>
+        </Canvas>
     </DockPanel>
 </Window>
