@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,10 @@ namespace WpfAppLaba7
         public DateTime DateBirth { get; set; }
         public Company Job { get; set; }
         public decimal Salary { get; set; }
+        static Person()
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        }
         public Person()
         {
             DateBirth = DateTime.MinValue;
