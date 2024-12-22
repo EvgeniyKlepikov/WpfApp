@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba6", "WpfAppLaba6\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba7", "WpfAppLaba7\WpfAppLaba7.csproj", "{4EC33F1C-5165-4EEC-B6EF-6553D60D2DE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba7Adapter", "WpfAppLaba7Adapter\WpfAppLaba7Adapter.csproj", "{EFAC5857-2D04-4882-AA2A-F22164129DAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{4EC33F1C-5165-4EEC-B6EF-6553D60D2DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EC33F1C-5165-4EEC-B6EF-6553D60D2DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EC33F1C-5165-4EEC-B6EF-6553D60D2DE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFAC5857-2D04-4882-AA2A-F22164129DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFAC5857-2D04-4882-AA2A-F22164129DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFAC5857-2D04-4882-AA2A-F22164129DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFAC5857-2D04-4882-AA2A-F22164129DAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
