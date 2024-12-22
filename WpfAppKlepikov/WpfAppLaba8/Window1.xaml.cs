@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAppLaba8.Models;
 
 namespace WpfAppLaba8
 {
@@ -19,19 +20,25 @@ namespace WpfAppLaba8
     /// </summary>
     public partial class Window1 : Window
     {
+        Student student;
         public Window1()
         {
             InitializeComponent();
         }
+        public Window1(Student student):this()
+        {
+            this.student = student;
+            grid.DataContext = student;
+        }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = true;
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

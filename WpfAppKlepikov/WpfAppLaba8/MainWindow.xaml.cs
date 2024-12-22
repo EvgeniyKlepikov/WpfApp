@@ -34,12 +34,19 @@ namespace WpfAppLaba8
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            Student student = new Student();
+            Window1 window1 = new Window1(student);
+            if (window1.ShowDialog() == false) return;
+            entityContext.Students.Add(student);
+            entityContext.SaveChanges();
+            window1.Close();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (dGrid.SelectedItems.Count == 0) return;
+            if (MessageBox.Show("Вы уверены?", $"Удалить {dGrid.SelectedItems.Count} записей", MessageBoxButton.YesNo)
+                == MessageBoxResult.No) return;
             for (int i = dGrid.SelectedItems.Count - 1; i >= 0; i--)
             {
                 Student student = dGrid.SelectedItems[i] as Student;
@@ -51,12 +58,22 @@ namespace WpfAppLaba8
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            Student student = dGrid.SelectedItem as Student;
+            Window1 window1 = new Window1(student);
+            if (window1.ShowDialog() == false) return;
+
             entityContext.SaveChanges();
+            window1.Close();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             entityContext.Dispose();
+        }
+
+        private void dGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = e.Row.GetIndex() + 1;
         }
     }
 }

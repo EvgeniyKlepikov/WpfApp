@@ -27,6 +27,7 @@
                 Edit student
             </Button>
         </StackPanel>
-        <DataGrid x:Name="dGrid" Grid.Column="1" ItemsSource="{Binding}"/>
+        <DataGrid x:Name="dGrid" Grid.Column="1" ItemsSource="{Binding}" IsReadOnly="True"
+                  RowHeaderWidth="50" LoadingRow="dGrid_LoadingRow"/>
     </Grid>
 </Window>
