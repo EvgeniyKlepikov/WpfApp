@@ -9,17 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppLaba2", "WpfAppLaba2\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppLaba3", "WpfAppLaba3\WpfAppLaba3.csproj", "{91F663CC-D793-4BDE-8BFB-B34F48E6FC3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba4", "WpfAppLaba4\WpfAppLaba4.csproj", "{1A1B91A8-3491-4AE8-B2E4-26BBCF2C782D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppLaba4", "WpfAppLaba4\WpfAppLaba4.csproj", "{1A1B91A8-3491-4AE8-B2E4-26BBCF2C782D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba4Hippodrome", "WpfAppLaba4Hippodrome\WpfAppLaba4Hippodrome.csproj", "{A84478D6-5B99-42B8-B3D7-62A2B93B6F50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppLaba4Hippodrome", "WpfAppLaba4Hippodrome\WpfAppLaba4Hippodrome.csproj", "{A84478D6-5B99-42B8-B3D7-62A2B93B6F50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba5", "WpfAppLaba5\WpfAppLaba5.csproj", "{E9B6C68F-6AED-43BE-926A-9CC41BDBDB18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppLaba5", "WpfAppLaba5\WpfAppLaba5.csproj", "{E9B6C68F-6AED-43BE-926A-9CC41BDBDB18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba6", "WpfAppLaba6\WpfAppLaba6.csproj", "{536EA673-9B15-4EE6-BA28-62DAF1F74762}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppLaba6", "WpfAppLaba6\WpfAppLaba6.csproj", "{536EA673-9B15-4EE6-BA28-62DAF1F74762}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba7", "WpfAppLaba7\WpfAppLaba7.csproj", "{4EC33F1C-5165-4EEC-B6EF-6553D60D2DE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppLaba7", "WpfAppLaba7\WpfAppLaba7.csproj", "{4EC33F1C-5165-4EEC-B6EF-6553D60D2DE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba7Adapter", "WpfAppLaba7Adapter\WpfAppLaba7Adapter.csproj", "{EFAC5857-2D04-4882-AA2A-F22164129DAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppLaba7Adapter", "WpfAppLaba7Adapter\WpfAppLaba7Adapter.csproj", "{EFAC5857-2D04-4882-AA2A-F22164129DAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppLaba8", "WpfAppLaba8\WpfAppLaba8.csproj", "{AAE72AF8-1CE7-4C2F-A03D-51D8E0C971BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{EFAC5857-2D04-4882-AA2A-F22164129DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFAC5857-2D04-4882-AA2A-F22164129DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFAC5857-2D04-4882-AA2A-F22164129DAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE72AF8-1CE7-4C2F-A03D-51D8E0C971BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE72AF8-1CE7-4C2F-A03D-51D8E0C971BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE72AF8-1CE7-4C2F-A03D-51D8E0C971BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE72AF8-1CE7-4C2F-A03D-51D8E0C971BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
