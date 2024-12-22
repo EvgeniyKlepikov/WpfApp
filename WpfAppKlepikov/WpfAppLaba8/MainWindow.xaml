@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppLaba8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5,10"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="stackButtons">
+            <Button x:Name="btnAdd" Click="btnAdd_Click">
+                Add student
+            </Button>
+            <Button x:Name="btnDelete" Click="btnDelete_Click">
+                Delete student
+            </Button>
+            <Button x:Name="btnEdit" Click="btnEdit_Click">                    
+                Edit student
+            </Button>
+        </StackPanel>
+        <DataGrid x:Name="dGrid" Grid.Column="1" ItemsSource="{Binding}"/>
     </Grid>
 </Window>
