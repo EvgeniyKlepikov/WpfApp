@@ -39,11 +39,19 @@ namespace WpfAppLaba7Adapter
         {
             Person.Update();
             Fill();
+
         }
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {
-
+            Person person = new Person();
+            Window1 windowPerson = new Window1(person);
+            if (windowPerson.ShowDialog() == false) return;
+            string result = person.Find();
+            if (result == "")
+                MessageBox.Show("Запись не найдена");
+            else
+                MessageBox.Show(result);
         }
     }
 }

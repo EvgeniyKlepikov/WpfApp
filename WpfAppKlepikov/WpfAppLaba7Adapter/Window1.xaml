@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfAppLaba7Adapter.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppLaba7Adapter"
+        mc:Ignorable="d"
+Title="WindowPerson" Height="400" Width="450" FontSize="18">
+    <Grid x:Name="grid" Background="LightSalmon">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="ID" Margin="15"/>
+        <Label Content="Name" Margin="15" Grid.Row="1"/>
+        <Label Content="Age" Margin="15" Grid.Row="2"/>
+        <Label Content="Company" Margin="15" Grid.Row="3"/>
+        <Label Content="Salary" Margin="15" Grid.Row="4"/>
+        <TextBox x:Name="textBoxID" Margin="15" Grid.Row="0" Grid.Column="1" Text="{Binding Path=ID}"/>
+        <TextBox x:Name="textBoxName" Margin="15" Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name}"/>
+        <TextBox x:Name="textBoxAge" Margin="15" Grid.Row="2" Grid.Column="1" Text="{Binding Path=Age}"/>
+        <TextBox x:Name="textBoxCompany" Margin="15" Grid.Row="3" Grid.Column="1" Text="{Binding Path=Company}"/>
+        <TextBox x:Name="textBoxSalary" Margin="15" Grid.Row="4" Grid.Column="1" Text="{Binding Path=Salary}"/>
+        <Button x:Name="buttonCancel" Content="Cancel" Margin="15" Grid.Row="5" Click="buttonCancel_Click" />
+        <Button x:Name="buttonOk" Content="OK" Margin="15" Grid.Row="5" Grid.Column="1" Click="buttonOk_Click"/>
+
+    </Grid>
+</Window>
