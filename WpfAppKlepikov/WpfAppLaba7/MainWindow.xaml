@@ -7,6 +7,70 @@
         mc:Ignorable="d"
         Title="Company and Person Management" Height="640" Width="900">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition  Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Company Management-->
+        <GroupBox Header="Company Management" Margin="10,10,10,5">
+            <StackPanel x:Name="CompanyStackPanel" DataContext="{Binding company}">
+                <TextBox x:Name="CompanyNameTextBox" Margin="5" Text="{Binding Name}"/>
+                <TextBox x:Name="HeadquartersTextBox" Margin="5" Text="{Binding Headquarters}"/>
+                <DatePicker x:Name="CompanyEstablishmentDatePicker" Margin="5" SelectedDate="{Binding DateEstablishment}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="AddCompanyButton" Content="Add" Margin="5" Click="AddCompanyButton_Click"/>
+                    <Button x:Name="UpdateCompanyButton" Content="Update" Margin="5" Click="UpdateCompanyButton_Click"/>
+                    <Button x:Name="DeleteCompanyButton" Content="Delete" Margin="5" Click="DeleteCompanyButton_Click"/>
+                    <Button x:Name="ClearCompanyButton" Content="Clear" Margin="5" Click="ClearCompanyButton_Click"/>
+                    <Button x:Name="FindCompanyButton" Content="Find" Margin="5" Click="FindCompanyButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <ListView x:Name="CompanyListView" Margin="5"
+                  Height="400" Grid.Row="1" SelectionChanged="CompanyListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" Width="30" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Name" Width="90" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Headquarters" Width="200" DisplayMemberBinding="{Binding Headquarters}"/>
+                    <GridViewColumn Header="Established" DisplayMemberBinding="{Binding DateEstablished, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        
+        
+        <!--Person Management-->
+        <GroupBox Header="Person Management" Grid.Column="1"  Margin="10">
+            <StackPanel x:Name="PersonStackPanel">
+                <TextBox x:Name="PersonNameTextBox" Margin="5" Text="{Binding Name}"/>
+                <DatePicker x:Name="PersonDateBirthDatePicker" Margin="5" SelectedDate="{Binding DateBirth}"/>
+                <ComboBox x:Name="CompanyComboBox" Margin="5" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="CompanyComboBox_SelectionChanged"/>
+                <TextBox x:Name="PersonSalaryTextBox" Margin="5" Text="{Binding Salary}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="AddPersonButton" Content="Add" Margin="5" Click="AddPersonButton_Click"/>
+                    <Button x:Name="UpdatePersonButton" Content="Update" Margin="5" Click="UpdatePersonButton_Click"/>
+                    <Button x:Name="DeletePersonButton" Content="Delete" Margin="5" Click="DeletePersonButton_Click"/>
+                    <Button x:Name="ClearPersonButton" Content="Clear" Margin="5" Click="ClearPersonButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <ListView x:Name="PersonListView" Margin="5" Height="400" Grid.Column="1" Grid.Row="1" SelectionChanged="PersonListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="DateBirth" DisplayMemberBinding="{Binding DateBirth, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+                    <GridViewColumn Header="Company" Width="100" DisplayMemberBinding="{Binding Job.Name}"/>
+                    <GridViewColumn Header="Salary" DisplayMemberBinding="{Binding Salary, StringFormat='{}{0:C}'}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

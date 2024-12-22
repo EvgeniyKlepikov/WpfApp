@@ -20,5 +20,65 @@ namespace WpfAppLaba7
         {
             InitializeComponent();
         }
+
+        private void AddCompanyButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateCompanyButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteCompanyButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClearCompanyButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FindCompanyButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CompanyListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void AddPersonButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdatePersonButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeletePersonButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClearPersonButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CompanyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void PersonListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
