@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace WpfAppCourse.ViewModels
         ManagersFactory factory;
         CarManager carManager;
         ApplicationManager applicationManager;
-        private string title = "Cars Window";
+        private string title = "Грузоперевозки";
         public ObservableCollection<Car> Cars { get; set; }
         public ObservableCollection<Application> Applications { get; set; }
         public string Title { get => title; set => title = value; }
@@ -57,5 +58,75 @@ namespace WpfAppCourse.ViewModels
                 Applications.Add(application);
         }
         #endregion Commands
+        #region AddAplication
+        private ICommand _newApplicationCommand;
+        public ICommand NewApplicationCommand =>
+        _newApplicationCommand ??= new
+        RelayCommand(OnNewApplicationExecuted);
+        private void OnNewApplicationExecuted(object id)
+        {
+            var dialog = new EditApplicationWindow
+            {
+                DateOfDispatch = DateTime.Now
+            };
+            if (dialog.ShowDialog() != true) return;
+            var application = new Application
+            {
+                CargoName = dialog.CargoName,
+                DateOfDispatch = dialog.DateOfDispatch,
+                Destination = dialog.Destination,
+                CargoWeight = dialog.CargoWeight,
+            };
+            carManager.AddApplicationToCar(application,
+            _selectedCar.CarId);
+            //var target = Path.Combine(Directory.GetCurrentDirectory(),
+            //"Images", fileName);
+            //File.Copy(dialog.ImagePass, target);
+            Applications.Add(application);
+        }
+        #endregion
+        #region Выбранная заявка
+        private Application _selectedApplication;
+        public Application SelectedApplication
+        {
+            get => _selectedApplication;
+            set
+            {
+                Set(ref _selectedApplication, value);
+            }
+        }
+        #endregion
+        #region Редактирование заявки
+        private ICommand _editApplicationCommand;
+        public ICommand EditApplicationCommand =>
+        _editApplicationCommand ??=
+        new RelayCommand(OnEditApplicationExecuted,
+        EditApplicationCanExecute);
+        // Проверка возможности редактирования
+        private bool EditApplicationCanExecute(object p) =>
+
+        _selectedApplication != null;
+
+        private void OnEditApplicationExecuted(object id)
+        {
+            var dialog = new EditApplicationWindow
+            {
+                CargoName = _selectedApplication.CargoName,
+                DateOfDispatch = _selectedApplication.DateOfDispatch,
+                Destination = _selectedApplication.Destination,
+                CargoWeight = _selectedApplication.CargoWeight
+
+            };
+            if (dialog.ShowDialog() != true) return;
+            // Вычисление индивидуальной стоимости обучения
+            _selectedApplication.CargoName = dialog.CargoName;
+            _selectedApplication.DateOfDispatch = dialog.DateOfDispatch;
+            _selectedApplication.Destination = dialog.Destination;
+            _selectedApplication.CargoWeight = dialog.CargoWeight;
+            applicationManager.UpdateApplication(_selectedApplication);
+            // Обновить список студентов
+            OnGetApplicationExecuted(_selectedCar.CarId);
+        }
+        #endregion
     }
 }

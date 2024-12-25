@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAppCourse.Commands;
 
 namespace WpfAppCourse
 {
@@ -63,5 +64,14 @@ namespace WpfAppCourse
             typeof(EditApplicationWindow), new
             PropertyMetadata(default(string)));
         #endregion
+        private ICommand _okCommand;
+        public ICommand OkCommand =>
+        _okCommand
+        ?? new RelayCommand(OnOkExecuted);
+        public void OnOkExecuted(object param)
+        {
+            this.DialogResult = true;
+            this.Close();
+        }
     }
 }

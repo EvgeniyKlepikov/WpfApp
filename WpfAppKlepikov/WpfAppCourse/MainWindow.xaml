@@ -13,7 +13,7 @@
             <Setter Property="Background" Value="Bisque"/>
         </Style>
         <Style TargetType="Grid">
-            <Setter Property="Background" Value="Bisque"/>
+            <Setter Property="Background" Value="DarkGoldenrod"/>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5,5,5,5"/>
@@ -28,7 +28,7 @@
             <Setter Property="Foreground" Value="Black"/>
         </Style>
         <Style TargetType="ListView">
-            <Setter Property="Background" Value="DarkGoldenrod"/>
+            <Setter Property="Background" Value="Bisque"/>
             <Setter Property="BorderBrush" Value="Black"/>
         </Style>
         <Style TargetType="Button">
@@ -51,7 +51,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-            <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="200">
+            <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="200" FontSize="14">
                 <ListView x:Name="Cars" ItemsSource="{Binding Cars}"
                         SelectedValue="{Binding SelectedCar}" SelectedIndex="0">
                     <!--#region Обработка события Selection Canged -->
@@ -70,7 +70,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </GroupBox >
-            <GroupBox Header="Параметры автомобиля" Grid.Column="1" Grid.ColumnSpan="2">
+            <GroupBox Header="Параметры автомобиля" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14">
                 <!--#region Таблица -->
                 <Grid DataContext="{Binding SelectedCar}">
                     <Grid.RowDefinitions>
@@ -93,9 +93,9 @@
             </GroupBox>
         
         <DockPanel Grid.Row="1" Grid.ColumnSpan="3">
-            <GroupBox Header="Список заявок" Width="550" DockPanel.Dock="Left">
+            <GroupBox Header="Список заявок" Width="550" DockPanel.Dock="Left" FontSize="14">
                 <ListView x:Name="Applications" ItemsSource="{Binding Applications}"
-                          SelectedItem="{Binding SelectedCar}">
+                          SelectedItem="{Binding SelectedApplication}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="10">
@@ -121,8 +121,8 @@
             </GroupBox>
             <GroupBox Width="Auto" HorizontalAlignment="Right">
                 <StackPanel >
-                    <Button>Добавить заявку</Button>
-                    <Button>Редактировать</Button>
+                    <Button Command="{Binding NewApplicationCommand}">Добавить заявку</Button>
+                    <Button Command="{Binding EditApplicationCommand}">Редактировать</Button>
                     <Button>Удалить</Button>
                 </StackPanel>
             </GroupBox>
