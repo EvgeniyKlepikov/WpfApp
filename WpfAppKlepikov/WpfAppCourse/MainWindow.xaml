@@ -9,8 +9,15 @@
         mc:Ignorable="d"
         Title="{Binding Title}" Height="450" Width="714">
     <Window.Resources>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="Bisque"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="Bisque"/>
+        </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="Padding" Value="15,5,5,5"/>
         </Style>
         <Style TargetType="GroupBox">
             <Setter Property="Margin" Value="2"/>
@@ -24,8 +31,12 @@
             <Setter Property="Background" Value="DarkGoldenrod"/>
             <Setter Property="BorderBrush" Value="Black"/>
         </Style>
-    </Window.Resources>    
-    
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>        
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -36,10 +47,10 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"></ColumnDefinition>
-            <!--<ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>-->
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DockPanel >
+        
             <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="200">
                 <ListView x:Name="Cars" ItemsSource="{Binding Cars}"
                         SelectedValue="{Binding SelectedCar}" SelectedIndex="0">
@@ -59,7 +70,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </GroupBox >
-            <GroupBox Header="Параметры автомобиля" Margin="2" Padding="2">
+            <GroupBox Header="Параметры автомобиля" Grid.Column="1" Grid.ColumnSpan="2">
                 <!--#region Таблица -->
                 <Grid DataContext="{Binding SelectedCar}">
                     <Grid.RowDefinitions>
@@ -71,7 +82,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock HorizontalAlignment="Right">Наименование автомобиля:</TextBlock>
+                    <TextBlock HorizontalAlignment="Right">Наименование:</TextBlock>
                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CarName}" Background="LightGray"/>
                     <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right">Гос. Номер:</TextBlock>
                     <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CarNumber}" Background="LightGray"/>
@@ -80,16 +91,40 @@
                 </Grid>
                 <!--#endregion-->
             </GroupBox>
-        </DockPanel>
-        <DockPanel Grid.Row="1">
-            <GroupBox Header="Список заявок" Margin="2" Padding="2">
-                <ListView x:Name="Applications" ItemsSource="{Binding Applications}">
+        
+        <DockPanel Grid.Row="1" Grid.ColumnSpan="3">
+            <GroupBox Header="Список заявок" Width="550" DockPanel.Dock="Left">
+                <ListView x:Name="Applications" ItemsSource="{Binding Applications}"
+                          SelectedItem="{Binding SelectedCar}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding CargoName}"/>
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <!--<ColumnDefinition Width="*"/>-->
+                                </Grid.ColumnDefinitions>
+                                <!--<Image Width="50" Source="{Binding ImageFileName}"/>-->
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <TextBlock Text="{Binding CargoName}"
+                                               HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                                    <TextBlock Text="{Binding CargoWeight, StringFormat={}{0:0.0 тонн}}"
+                                               HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                                    <TextBlock Text="{Binding DateOfDispatch, StringFormat={}{0:dd.MM.yyyy дата отправки}}"
+                                               HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                                    <TextBlock Text="{Binding Destination}"
+                                               Margin="5,0,0,0"/>
+                                </StackPanel>
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+            </GroupBox>
+            <GroupBox Width="Auto" HorizontalAlignment="Right">
+                <StackPanel >
+                    <Button>Добавить заявку</Button>
+                    <Button>Редактировать</Button>
+                    <Button>Удалить</Button>
+                </StackPanel>
             </GroupBox>
         </DockPanel>
     </Grid>

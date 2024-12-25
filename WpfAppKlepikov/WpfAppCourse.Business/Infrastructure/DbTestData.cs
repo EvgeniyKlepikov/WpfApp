@@ -59,7 +59,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Плитка",
                     Destination = "Гродно"
                 },
-                cars[0].CarId);
+            cars[0].CarId);
             carManager.AddApplicationToCar(
                 new Application
                 {
@@ -68,7 +68,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Кровля",
                     Destination = "Гродно"
                 },
-                cars[0].CarId);
+            cars[0].CarId);
             carManager.AddApplicationToCar(
                 new Application
                 {
@@ -77,7 +77,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Гипсокартон",
                     Destination = "Гродно"
                 },
-                cars[0].CarId);
+            cars[0].CarId);
             carManager.AddApplicationToCar(
                 new Application
                 {
@@ -86,7 +86,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Саморезы",
                     Destination = "Гродно"
                 },
-                cars[0].CarId);
+            cars[0].CarId);
             //Для второй машины
             carManager.AddApplicationToCar(
                 new Application
@@ -96,7 +96,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Мебель",
                     Destination = "Витебск"
                 },
-                cars[1].CarId);
+            cars[1].CarId);
             carManager.AddApplicationToCar(
                 new Application
                 {
@@ -105,7 +105,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Вагонка",
                     Destination = "Витебск"
                 },
-                cars[1].CarId);
+            cars[1].CarId);
             carManager.AddApplicationToCar(
                 new Application
                 {
@@ -114,7 +114,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Бумага",
                     Destination = "Витебск"
                 },
-                cars[1].CarId);
+            cars[1].CarId);
             carManager.AddApplicationToCar(
                 new Application
                 {
@@ -123,7 +123,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Ламинат",
                     Destination = "Витебск"
                 },
-                cars[1].CarId);
+            cars[1].CarId);
             //Для третьей машины
             carManager.AddApplicationToCar(
                 new Application
@@ -133,7 +133,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "ПВХ панели",
                     Destination = "Орша"
                 },
-                cars[2].CarId);
+            cars[2].CarId);
             carManager.AddApplicationToCar(
                 new Application
                 {
@@ -142,7 +142,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Доска обрезная",
                     Destination = "Орша"
                 },
-                cars[2].CarId);
+            cars[2].CarId);
             carManager.AddApplicationToCar(
                 new Application
                 {
@@ -151,7 +151,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Обои",
                     Destination = "Орша"
                 },
-                cars[2].CarId);
+            cars[2].CarId);
             carManager.AddApplicationToCar(
                 new Application
                 {
@@ -160,7 +160,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     CargoName = "Картон",
                     Destination = "Орша"
                 },
-                cars[2].CarId);
+            cars[2].CarId);
         }
     }
 }
