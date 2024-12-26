@@ -79,9 +79,6 @@ namespace WpfAppCourse.ViewModels
             };
             carManager.AddApplicationToCar(application,
             _selectedCar.CarId);
-            //var target = Path.Combine(Directory.GetCurrentDirectory(),
-            //"Images", fileName);
-            //File.Copy(dialog.ImagePass, target);
             Applications.Add(application);
         }
         #endregion
@@ -118,15 +115,40 @@ namespace WpfAppCourse.ViewModels
 
             };
             if (dialog.ShowDialog() != true) return;
-            // Вычисление индивидуальной стоимости обучения
+            // Сохранение параметров
             _selectedApplication.CargoName = dialog.CargoName;
             _selectedApplication.DateOfDispatch = dialog.DateOfDispatch;
             _selectedApplication.Destination = dialog.Destination;
             _selectedApplication.CargoWeight = dialog.CargoWeight;
             applicationManager.UpdateApplication(_selectedApplication);
-            // Обновить список студентов
+            // Обновить список заявок
             OnGetApplicationExecuted(_selectedCar.CarId);
         }
         #endregion
+        public ICommand _deleteApplicationCommand;
+
+        public ICommand DeleteApplicationCommand
+            => _deleteApplicationCommand
+            ??= new RelayCommand(OnDeleteApplicationExecuted, DeleteApplicationCanExecute);
+        // Проверка возможности удаления
+        private bool DeleteApplicationCanExecute(object p) =>
+
+        _selectedApplication != null;
+
+
+        private void OnDeleteApplicationExecuted(object ob)
+        {
+            if (SelectedApplication != null)
+            {
+                var result = System.Windows.MessageBox.Show($"Заявка {SelectedApplication.CargoName} будет удалена!", "Подтверждение", System.Windows.MessageBoxButton.YesNo);
+                if (result == System.Windows.MessageBoxResult.Yes)
+                {
+                    applicationManager.DeleteApplication(_selectedApplication.ApplicationId);
+                    //applicationManager.UpdateApplication(_selectedApplication);
+                    OnGetApplicationExecuted(_selectedCar.CarId);
+
+                }
+            }
+        }
     }
 }

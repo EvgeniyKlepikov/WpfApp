@@ -123,7 +123,7 @@
                 <StackPanel >
                     <Button Command="{Binding NewApplicationCommand}">Добавить заявку</Button>
                     <Button Command="{Binding EditApplicationCommand}">Редактировать</Button>
-                    <Button>Удалить</Button>
+                    <Button Command="{Binding DeleteApplicationCommand}">Удалить</Button>
                 </StackPanel>
             </GroupBox>
         </DockPanel>
