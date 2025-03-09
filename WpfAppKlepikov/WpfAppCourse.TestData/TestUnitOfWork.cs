@@ -30,6 +30,16 @@ namespace WpfAppCourse.TestData
 
         public IRepository<Car> CarsRepository => carsRepository;
 
+        public IRepository<Client> ClientsRepository => throw new NotImplementedException();
+
+        public IRepository<Driver> DriversRepository => throw new NotImplementedException();
+
+        public IRepository<Payment> PaymentsRepository => throw new NotImplementedException();
+
+        public IRepository<Route> RoutesRepository => throw new NotImplementedException();
+
+        public IRepository<TechnicalStatus> TechnicalStatusesRepository => throw new NotImplementedException();
+
         public void SaveChanges()
         {
         }

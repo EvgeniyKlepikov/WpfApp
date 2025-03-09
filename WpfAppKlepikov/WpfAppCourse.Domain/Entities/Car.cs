@@ -14,5 +14,7 @@ namespace WpfAppCourse.Domain.Entities
         public int CarNumber { get; set; }
         // навигационное свойство
         public ICollection<Application> Applications { get; set; }
+        public ICollection<Driver> Drivers { get; set; }
+        public ICollection<TechnicalStatus> TechnicalStatuses { get; set; }
     }
 }

@@ -16,6 +16,12 @@ namespace WpfAppCourse.DAL.Repositories
         private readonly CargoContext context;
         private IRepository<Application> applicationsRepository;
         private IRepository<Car> carsRepository;
+        private IRepository<Client> clientsRepository;
+        private IRepository<Driver> driversRepository;
+        private IRepository<Payment> paymentsRepository;
+        private IRepository<Route> routesRepository;
+        private IRepository<TechnicalStatus> technicalStatusesRepository;
+
         public EfUnitOfWork(string connectionString)
         {
             var options = new DbContextOptionsBuilder<CargoContext>()
@@ -28,6 +34,17 @@ namespace WpfAppCourse.DAL.Repositories
             => applicationsRepository ?? new EfApplicationRepository(context);
         public IRepository<Car> CarsRepository 
             => carsRepository ?? new EfCarsRepository(context);
+        public IRepository<Client> ClientsRepository
+            => clientsRepository ?? new EfClientsRepository(context);
+        public IRepository<Driver> DriversRepository
+            => driversRepository ?? new EfDriversRepository(context);
+        public IRepository<Payment> PaymentsRepository
+            => paymentsRepository ?? new EfPaymentsRepository(context);
+        public IRepository<Route> RoutesRepository
+            => routesRepository ?? new EfRoutesRepository(context);
+        public IRepository<TechnicalStatus> TechnicalStatusesRepository
+            => technicalStatusesRepository ?? new EfTechnicalStatusesRepository(context);
+
         public void SaveChanges()
         {
             context.SaveChanges();

@@ -16,6 +16,8 @@ namespace WpfAppCourse.Business.Infrastructure
         private readonly IUnitOfWork unitOfWork;
         private readonly ApplicationManager applicationManager;
         private readonly CarManager carManager;
+        private readonly DriverManager driverManager;
+
         public ManagersFactory(string connStringName)
         {
             var configuration = new ConfigurationBuilder()
@@ -40,5 +42,11 @@ namespace WpfAppCourse.Business.Infrastructure
             return carManager
             ?? new CarManager(unitOfWork);
         }
+        public DriverManager GetDriverManager()
+        {
+            return driverManager
+            ?? new DriverManager(unitOfWork);
+        }
+
     }
 }

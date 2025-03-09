@@ -18,9 +18,11 @@ namespace WpfAppCourse.ViewModels
         ManagersFactory factory;
         CarManager carManager;
         ApplicationManager applicationManager;
+        DriverManager driverManager;
         private string title = "Грузоперевозки";
         public ObservableCollection<Car> Cars { get; set; }
         public ObservableCollection<Application> Applications { get; set; }
+        public ObservableCollection<Driver> Drivers { get; set; }
         public string Title { get => title; set => title = value; }
         private Car _selectedCar;
 
@@ -31,8 +33,10 @@ namespace WpfAppCourse.ViewModels
             if (carManager.Cars.Count() == 0)
                 DbTestData.SetupData(carManager);
             applicationManager = factory.GetApplicationManager();
+            driverManager = factory.GetDriverManager();
             Cars = new ObservableCollection<Car>(carManager.Cars);
             Applications = new ObservableCollection<Application>();
+            Drivers = new ObservableCollection<Driver>();
             if (Cars.Count() > 0)
                 OnGetApplicationExecuted(Cars[0].CarId);
         }

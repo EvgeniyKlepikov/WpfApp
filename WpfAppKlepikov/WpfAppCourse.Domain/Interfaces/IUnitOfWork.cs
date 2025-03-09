@@ -12,6 +12,12 @@ namespace WpfAppCourse.Domain.Interfaces
     {
         IRepository<Application> ApplicationsRepository { get; }
         IRepository<Car> CarsRepository { get; }
+        IRepository<Client> ClientsRepository { get; }
+        IRepository<Driver> DriversRepository { get; }
+        IRepository<Payment> PaymentsRepository { get; }
+        IRepository<Route> RoutesRepository { get; }
+        IRepository<TechnicalStatus> TechnicalStatusesRepository { get; }
+
         void SaveChanges();
     }
 }
