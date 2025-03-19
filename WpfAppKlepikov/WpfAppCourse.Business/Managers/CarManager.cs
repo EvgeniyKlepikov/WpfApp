@@ -54,8 +54,7 @@ namespace WpfAppCourse.Business.Managers
             else applicationRepository.Update(application);
             unitOfWork.SaveChanges();
         }
-        public void RemoveApplicationFromCar(Application application, int
-carId)
+        public void RemoveApplicationFromCar(Application application, int carId)
         {
             var car = carRepository.Get(carId, "Applications");
             car.Applications.Remove(application);
@@ -67,6 +66,49 @@ carId)
         public ICollection<Application> GetApplicationsOfCar(int carId) => applicationRepository
             .Find(a => a.CarId == carId)
             .ToList();
+
+        public void AddDriverToCar(Driver driver, int carId)
+        {
+            var car = carRepository.Get(carId);
+            driver.CarId = carId;
+            if (driver.DriverId <= 0)
+                driverRepository.Create(driver);
+            else driverRepository.Update(driver);
+            unitOfWork.SaveChanges();
+        }
+        public void RemoveDriverFromCar(Driver driver, int carId)
+        {
+            var car = carRepository.Get(carId, "Drivers");
+            car.Drivers.Remove(driver);
+            carRepository.Update(car);
+            driverRepository.Update(driver);
+            unitOfWork.SaveChanges();
+        }
+        public ICollection<Driver> GetDriversOfCar(int carId) => driverRepository
+            .Find(d => d.CarId == carId)
+            .ToList();
+
+        public void AddTechnicalStatusToCar(TechnicalStatus technicalStatus, int carId)
+        {
+            var car = carRepository.Get(carId);
+            technicalStatus.CarId = carId;
+            if (technicalStatus.TechnicalStatusId <= 0)
+                technicalStatusRepository.Create(technicalStatus);
+            else technicalStatusRepository.Update(technicalStatus);
+            unitOfWork.SaveChanges();
+        }
+        public void RemoveTechnicalStatusFromCar(TechnicalStatus technicalStatus, int carId)
+        {
+            var car = carRepository.Get(carId, "TechnicalStatuses");
+            car.TechnicalStatuses.Remove(technicalStatus);
+            carRepository.Update(car);
+            technicalStatusRepository.Update(technicalStatus);
+            unitOfWork.SaveChanges();
+        }
+        public ICollection<TechnicalStatus> GetTechnicalStatusesOfCar(int carId) => technicalStatusRepository
+            .Find(t => t.CarId == carId)
+            .ToList();
+
         #endregion basic CRUD operations
     }
 }

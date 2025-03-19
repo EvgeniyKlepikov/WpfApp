@@ -14,6 +14,7 @@ namespace WpfAppCourse.Business.Managers
         public DriverManager(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
+
         #region basic CRUD operations
         public bool DeleteDriver(int id)
         {
@@ -31,7 +32,6 @@ namespace WpfAppCourse.Business.Managers
             driverRepository.Update(driver);
             unitOfWork.SaveChanges();
         }
-
         #endregion basic CRUD operations
 
     }

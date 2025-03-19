@@ -14,12 +14,10 @@ namespace WpfAppCourse.DAL.Repositories
 {
     public class EfClientsRepository : IRepository<Client>
     {
-        private readonly CargoContext context;
         private readonly DbSet<Client> clients;
 
         public EfClientsRepository(CargoContext context)
         {
-            this.context = context;
             clients = context.Clients;
         }
 
@@ -32,13 +30,6 @@ namespace WpfAppCourse.DAL.Repositories
         {
             var client = clients.Find(id);
             if (client == null) return false;
-            if (client.ApplicationId > 0)
-            {
-                context.Applications
-                    .Find(client.ApplicationId)
-                    .Clients
-                    .Remove(client);
-            };
             clients.Remove(client);
             return true;
         }

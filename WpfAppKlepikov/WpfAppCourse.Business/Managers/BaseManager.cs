@@ -14,15 +14,22 @@ namespace WpfAppCourse.Business.Managers
         protected readonly IUnitOfWork unitOfWork;
         protected readonly IRepository<Application> applicationRepository;
         protected readonly IRepository<Car> carRepository;
+        protected readonly IRepository<Client> clientRepository;
         protected readonly IRepository<Driver> driverRepository;
-
+        protected readonly IRepository<Payment> paymentRepository;
+        protected readonly IRepository<Route> routeRepository;
+        protected readonly IRepository<TechnicalStatus> technicalStatusRepository;
 
         public BaseManager(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
             applicationRepository = unitOfWork.ApplicationsRepository;
             carRepository = unitOfWork.CarsRepository;
+            clientRepository = unitOfWork.ClientsRepository;
             driverRepository = unitOfWork.DriversRepository;
+            paymentRepository = unitOfWork.PaymentsRepository;
+            routeRepository = unitOfWork.RoutesRepository;
+            technicalStatusRepository = unitOfWork.TechnicalStatusesRepository;
         }
     }
 }

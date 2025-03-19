@@ -16,7 +16,11 @@ namespace WpfAppCourse.Business.Infrastructure
         private readonly IUnitOfWork unitOfWork;
         private readonly ApplicationManager applicationManager;
         private readonly CarManager carManager;
+        private readonly ClientManager clientManager;
         private readonly DriverManager driverManager;
+        private readonly PaymentManager paymentManager;
+        private readonly RouteManager routeManager;
+        private readonly TechnicalStatusManager technicalStatusManager;
 
         public ManagersFactory(string connStringName)
         {
@@ -42,11 +46,30 @@ namespace WpfAppCourse.Business.Infrastructure
             return carManager
             ?? new CarManager(unitOfWork);
         }
+        public ClientManager GetClientManager()
+        {
+            return clientManager
+            ?? new ClientManager(unitOfWork);
+        }
         public DriverManager GetDriverManager()
         {
             return driverManager
             ?? new DriverManager(unitOfWork);
         }
-
+        public PaymentManager GetPaymentManager()
+        {
+            return paymentManager
+            ?? new PaymentManager(unitOfWork);
+        }
+        public RouteManager GetRouteManager()
+        {
+            return routeManager
+            ?? new RouteManager(unitOfWork);
+        }
+        public TechnicalStatusManager GetTechnicalStatusManager()
+        {
+            return technicalStatusManager
+            ?? new TechnicalStatusManager(unitOfWork);
+        }
     }
 }

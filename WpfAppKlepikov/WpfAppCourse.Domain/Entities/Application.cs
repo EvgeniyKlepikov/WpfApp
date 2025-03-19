@@ -17,8 +17,10 @@ namespace WpfAppCourse.Domain.Entities
         // Навигационные свойства
         public int CarId { get; set; }
         public Car Car { get; set; }
-        public ICollection<Route> Routes { get; set; }
-        public ICollection<Client> Clients { get; set; }
+        //public int ClientId { get; set; }
+        //public Client Client { get; set; }
+        //public int RouteId { get; set; }
+        //public Route Route { get; set; }
         public ICollection<Payment> Payments { get; set; }
 
     }

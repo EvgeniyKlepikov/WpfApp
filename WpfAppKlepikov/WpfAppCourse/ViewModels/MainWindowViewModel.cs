@@ -154,5 +154,29 @@ namespace WpfAppCourse.ViewModels
                 }
             }
         }
+        //#region DriverWindow
+        //private ICommand _driverWindowCommand;
+        //public ICommand DriverWindowCommand =>
+        //_driverWindowCommand ??= new
+        //RelayCommand(OnDriverWindowExecuted);
+        //private void OnDriverWindowExecuted(object id)
+        //{
+        //    var dialog = new DriverWindow
+        //    {
+        //    };
+        //    if (dialog.ShowDialog() != true) return;
+        //    //var application = new Application
+        //    //{
+        //    //    CargoName = dialog.CargoName,
+        //    //    DateOfDispatch = dialog.DateOfDispatch,
+        //    //    Destination = dialog.Destination,
+        //    //    CargoWeight = dialog.CargoWeight,
+        //    //};
+        //    //carManager.AddApplicationToCar(application,
+        //    //_selectedCar.CarId);
+        //    //Applications.Add(application);
+        //}
+        //#endregion
+
     }
 }
