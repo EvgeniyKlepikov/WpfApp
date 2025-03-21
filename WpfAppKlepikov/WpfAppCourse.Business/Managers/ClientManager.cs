@@ -16,6 +16,18 @@ namespace WpfAppCourse.Business.Managers
         }
 
         #region basic CRUD operations
+        public Client CreateClient(Client client)
+        {
+            clientRepository.Create(client);
+            unitOfWork.SaveChanges();
+            return client;
+        }
+        public void AddRange(List<Client> clients)
+        {
+            clients.ForEach(c => clientRepository.Create(c));
+            unitOfWork.SaveChanges();
+        }
+
         public bool DeleteClient(int id)
         {
             var result = clientRepository.Delete(id);

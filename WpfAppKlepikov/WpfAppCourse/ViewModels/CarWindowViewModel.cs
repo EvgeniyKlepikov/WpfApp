@@ -17,11 +17,11 @@ namespace WpfAppCourse.ViewModels
         ManagersFactory factory;
         CarManager carManager;
         //ApplicationManager applicationManager;
-        DriverManager driverManager;
+        //DriverManager driverManager;
         private string title = "Автомобили";
         public ObservableCollection<Car> Cars { get; set; }
         //public ObservableCollection<Application> Applications { get; set; }
-        public ObservableCollection<Driver> Drivers { get; set; }
+        //public ObservableCollection<Driver> Drivers { get; set; }
         public string Title { get => title; set => title = value; }
         private Car _selectedCar;
 
@@ -32,12 +32,12 @@ namespace WpfAppCourse.ViewModels
             //if (carManager.Cars.Count() == 0)
             //    DbTestData.SetupData(carManager);
             //applicationManager = factory.GetApplicationManager();
-            driverManager = factory.GetDriverManager();
+            //driverManager = factory.GetDriverManager();
             Cars = new ObservableCollection<Car>(carManager.Cars);
             //Applications = new ObservableCollection<Application>();
-            Drivers = new ObservableCollection<Driver>();
-            if (Cars.Count() > 0)
-                OnGetDriverExecuted(Cars[0].CarId);
+            //Drivers = new ObservableCollection<Driver>();
+            //if (Cars.Count() > 0)
+            //    OnGetDriverExecuted(Cars[0].CarId);
         }
 
         public Car SelectedCar
@@ -49,108 +49,101 @@ namespace WpfAppCourse.ViewModels
             }
         }
         #region Commands
-        private ICommand _getDriversCommand;
-        public ICommand GetDriversCommand
-            => _getDriversCommand
-            ??= new RelayCommand(OnGetDriverExecuted);
-        private void OnGetDriverExecuted(object id)
-        {
-            Drivers.Clear();
-            var drivers = carManager.GetDriversOfCar((int)id);
-            foreach (var driver in drivers)
-                Drivers.Add(driver);
-        }
+        //private ICommand _getCarsCommand;
+        //public ICommand GetCarsCommand
+        //    => _getCarsCommand
+        //    ??= new RelayCommand(OnGetCarExecuted);
+        //private void OnGetCarExecuted(object id)
+        //{
+        //    Cars.Clear();
+        //    var cars = carManager.GetDriversOfCar((int)id);
+        //    foreach (var driver in drivers)
+        //        Drivers.Add(driver);
+        //}
         #endregion Commands
-        #region AddAplication
-        private ICommand _newDriverCommand;
-        public ICommand NewDriverCommand =>
-        _newDriverCommand ??= new
-        RelayCommand(OnNewDriverExecuted);
-        private void OnNewDriverExecuted(object id)
+        #region Car
+        private ICommand _newCarCommand;
+        public ICommand NewCarCommand =>
+        _newCarCommand ??= new
+        RelayCommand(OnNewCarExecuted);
+        private void OnNewCarExecuted(object id)
         {
-            var dialog = new EditDriverWindow
+            var dialog = new EditCarWindow
             {
-                DateOfAdmission = DateTime.Now
+                //DateOfAdmission = DateTime.Now
             };
             if (dialog.ShowDialog() != true) return;
-            var driver = new Driver
+            var car = new Car
             {
-                DriverName = dialog.DriverName,
-                //DriverSurname = dialog.DriverSurname,
-                DriverAge = dialog.DriverAge,
-                //DriverExperience = dialog.DriverExperience,
-                DateOfAdmission = dialog.DateOfAdmission,
+                CarName = dialog.CarName,
+                CarNumber = dialog.CarNumber,
+                CarWeight = dialog.CarWeight,
             };
-            carManager.AddDriverToCar(driver,
-            _selectedCar.CarId);
-            Drivers.Add(driver);
+            carManager.CreateCar(car);
+            Cars.Add(car);
         }
         #endregion
-        #region Выбранный водитель
-        private Driver _selectedDriver;
-        public Driver SelectedDriver
-        {
-            get => _selectedDriver;
-            set
-            {
-                Set(ref _selectedDriver, value);
-            }
-        }
-        #endregion
-        #region Редактирование водителя
-        private ICommand _editDriverCommand;
-        public ICommand EditDriverCommand =>
-        _editDriverCommand ??=
-        new RelayCommand(OnEditDriverExecuted,
-        EditDriverCanExecute);
+        //#region Выбранный водитель
+        //private Driver _selectedDriver;
+        //public Driver SelectedDriver
+        //{
+        //    get => _selectedDriver;
+        //    set
+        //    {
+        //        Set(ref _selectedDriver, value);
+        //    }
+        //}
+        //#endregion
+        #region Редактирование автомобиля
+        private ICommand _editCarCommand;
+        public ICommand EditCarCommand =>
+        _editCarCommand ??=
+        new RelayCommand(OnEditCarExecuted,
+        EditCarCanExecute);
         // Проверка возможности редактирования
-        private bool EditDriverCanExecute(object p) =>
+        private bool EditCarCanExecute(object p) =>
 
-        _selectedDriver != null;
+        _selectedCar != null;
 
-        private void OnEditDriverExecuted(object id)
+        private void OnEditCarExecuted(object id)
         {
-            var dialog = new EditDriverWindow
+            var dialog = new EditCarWindow
             {
-                DriverName = _selectedDriver.DriverName,
-                //DriverSurname = _selectedDriver.DriverSurname,
-                DriverAge = _selectedDriver.DriverAge,
-                //DriverExperience = _selectedDriver.DriverExperience,
-                DateOfAdmission = _selectedDriver.DateOfAdmission,
+                CarName = _selectedCar.CarName,
+                CarNumber = _selectedCar.CarNumber,
+                CarWeight = _selectedCar.CarWeight,
             };
             if (dialog.ShowDialog() != true) return;
             // Сохранение параметров
-            _selectedDriver.DriverName = dialog.DriverName;
-            //_selectedDriver.DriverSurname = dialog.DriverSurname;
-            _selectedDriver.DriverAge = dialog.DriverAge;
-            //_selectedDriver.DriverExperience = dialog.DriverExperience;
-            _selectedDriver.DateOfAdmission = dialog.DateOfAdmission;
-            driverManager.UpdateDriver(_selectedDriver);
+            _selectedCar.CarName = dialog.CarName;
+            _selectedCar.CarNumber = dialog.CarNumber;
+            _selectedCar.CarWeight = dialog.CarWeight;
+            carManager.UpdateCar(_selectedCar);
             // Обновить список заявок
-            OnGetDriverExecuted(_selectedCar.CarId);
+            //OnGetCarExecuted(_selectedCar.CarId);
         }
         #endregion
-        public ICommand _deleteDriverCommand;
+        public ICommand _deleteCarCommand;
 
-        public ICommand DeleteDriverCommand
-            => _deleteDriverCommand
-            ??= new RelayCommand(OnDeleteDriverExecuted, DeleteDriverCanExecute);
+        public ICommand DeleteCarCommand
+            => _deleteCarCommand
+            ??= new RelayCommand(OnDeleteCarExecuted, DeleteCarCanExecute);
         // Проверка возможности удаления
-        private bool DeleteDriverCanExecute(object p) =>
+        private bool DeleteCarCanExecute(object p) =>
 
-        _selectedDriver != null;
+        _selectedCar != null;
 
 
-        private void OnDeleteDriverExecuted(object ob)
+        private void OnDeleteCarExecuted(object ob)
         {
-            if (SelectedDriver != null)
+            if (SelectedCar != null)
             {
-                var result = System.Windows.MessageBox.Show($"Водитель {SelectedDriver.DriverSurname} будет удален!", "Подтверждение", System.Windows.MessageBoxButton.YesNo);
+                var result = System.Windows.MessageBox.Show($"Автомобиль {SelectedCar.CarName} будет удален!", "Подтверждение", System.Windows.MessageBoxButton.YesNo);
                 if (result == System.Windows.MessageBoxResult.Yes)
                 {
-                    driverManager.DeleteDriver(_selectedDriver.DriverId);
+                    carManager.DeleteCar(_selectedCar.CarId);
                     //applicationManager.UpdateApplication(_selectedApplication);
-                    OnGetDriverExecuted(_selectedDriver.CarId);
+                    //OnGetCarExecuted(_selectedCar.CarId);
                 }
             }
         }

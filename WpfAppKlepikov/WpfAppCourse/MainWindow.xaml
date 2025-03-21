@@ -125,6 +125,8 @@
                     <Button Command="{Binding EditApplicationCommand}">Редактировать</Button>
                     <Button Command="{Binding DeleteApplicationCommand}">Удалить</Button>
                     <Button Command="{Binding DriverWindowCommand}">Водители</Button>
+                    <Button Command="{Binding CarWindowCommand}">Автомобили</Button>
+                    <Button Command="{Binding ClientWindowCommand}">Заказчики</Button>
                 </StackPanel>
             </GroupBox>
         </DockPanel>

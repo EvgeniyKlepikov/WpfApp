@@ -34,6 +34,16 @@ namespace WpfAppCourse
             DependencyProperty.Register("DriverName", typeof(string),
             typeof(EditDriverWindow), new
             PropertyMetadata(default(string)));
+        public string DriverSurname
+        {
+            get { return (string)GetValue(DriverSurnameProperty); }
+            set { SetValue(DriverSurnameProperty, value); }
+        }
+        public static readonly DependencyProperty DriverSurnameProperty =
+            DependencyProperty.Register("DriverSurname", typeof(string),
+            typeof(EditDriverWindow), new
+            PropertyMetadata(default(string)));
+
         public DateTime DateOfAdmission
         {
             get { return (DateTime)GetValue(DateOfAdmissionProperty); }
@@ -54,15 +64,15 @@ namespace WpfAppCourse
             typeof(EditDriverWindow), new
             PropertyMetadata(default(int)));
 
-        public string DriverExperience
+        public int DriverExperience
         {
-            get { return (string)GetValue(DriverExperienceProperty); }
+            get { return (int)GetValue(DriverExperienceProperty); }
             set { SetValue(DriverExperienceProperty, value); }
         }
         public static readonly DependencyProperty DriverExperienceProperty =
-            DependencyProperty.Register("DriverExperience", typeof(string),
+            DependencyProperty.Register("DriverExperience", typeof(int),
             typeof(EditDriverWindow), new
-            PropertyMetadata(default(string)));
+            PropertyMetadata(default(int)));
         #endregion
         private ICommand _okCommand;
         public ICommand OkCommand =>

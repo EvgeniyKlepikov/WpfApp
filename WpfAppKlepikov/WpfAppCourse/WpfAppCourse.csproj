@@ -9,18 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="DriverWindow.xaml.cs" />
-    <Compile Remove="EditDriverWindow.xaml.cs" />
-    <Compile Remove="ViewModels\CarWindowViewModel.cs" />
-    <Compile Remove="ViewModels\DriverWindowViewModel.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Remove="DriverWindow.xaml" />
-    <Page Remove="EditDriverWindow.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
   </ItemGroup>
 
