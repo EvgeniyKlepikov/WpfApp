@@ -88,6 +88,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 23),
                     CargoName = "Плитка",
                     Destination = "Гродно"
+                    //ClientId = 1,
                 },
             cars[0].CarId);
             carManager.AddApplicationToCar(
@@ -97,6 +98,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 23),
                     CargoName = "Кровля",
                     Destination = "Гродно"
+                    //ClientId = 1,
                 },
             cars[0].CarId);
             carManager.AddApplicationToCar(
@@ -106,6 +108,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 23),
                     CargoName = "Гипсокартон",
                     Destination = "Гродно"
+                    //ClientId = 1,
                 },
             cars[0].CarId);
             carManager.AddApplicationToCar(
@@ -115,6 +118,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 23),
                     CargoName = "Саморезы",
                     Destination = "Гродно"
+                    //ClientId = 1,
                 },
             cars[0].CarId);
             //Для второй машины
@@ -125,6 +129,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 10),
                     CargoName = "Мебель",
                     Destination = "Витебск"
+                    //ClientId = 1,
                 },
             cars[1].CarId);
             carManager.AddApplicationToCar(
@@ -134,6 +139,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 10),
                     CargoName = "Вагонка",
                     Destination = "Витебск"
+                    //ClientId = 1,
                 },
             cars[1].CarId);
             carManager.AddApplicationToCar(
@@ -143,6 +149,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 10),
                     CargoName = "Бумага",
                     Destination = "Витебск"
+                    //ClientId = 1,
                 },
             cars[1].CarId);
             carManager.AddApplicationToCar(
@@ -152,6 +159,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 10),
                     CargoName = "Ламинат",
                     Destination = "Витебск"
+                    //ClientId = 1,
                 },
             cars[1].CarId);
             //Для третьей машины
@@ -162,6 +170,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 15),
                     CargoName = "ПВХ панели",
                     Destination = "Орша"
+                    //ClientId = 1,
                 },
             cars[2].CarId);
             carManager.AddApplicationToCar(
@@ -171,6 +180,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 15),
                     CargoName = "Доска обрезная",
                     Destination = "Орша"
+                    //ClientId = 1,
                 },
             cars[2].CarId);
             carManager.AddApplicationToCar(
@@ -180,6 +190,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 15),
                     CargoName = "Обои",
                     Destination = "Орша"
+                    //ClientId = 1,
                 },
             cars[2].CarId);
             carManager.AddApplicationToCar(
@@ -189,6 +200,7 @@ namespace WpfAppCourse.Business.Infrastructure
                     DateOfDispatch = new DateTime(2025, 01, 15),
                     CargoName = "Картон",
                     Destination = "Орша"
+                    //ClientId = 1,
                 },
             cars[2].CarId);
 

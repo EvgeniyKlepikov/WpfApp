@@ -13,8 +13,12 @@ namespace WpfAppCourse.Domain.Entities
         public int CarWeight { get; set; }
         public int CarNumber { get; set; }
         // навигационное свойство
+        //public int RouteId { get; set; }
+        //public Route Route { get; set; }
+
         public ICollection<Application> Applications { get; set; }
         public ICollection<Driver> Drivers { get; set; }
+        public ICollection<Route> Routes { get; set; }
         public ICollection<TechnicalStatus> TechnicalStatuses { get; set; }
     }
 }

@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:WpfAppCourse"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="EditApplicationWindow" Height="250" Width="450"
+        Title="Карточка заявки" Height="250" Width="450"
         WindowStartupLocation="CenterOwner">
     <DockPanel Background="LightGoldenrodYellow">
         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0"
                     Text="Заявка на грузоперевозку" FontWeight="Bold" FontSize="15"/>
         <UniformGrid DockPanel.Dock="Bottom" Rows="1" HorizontalAlignment="Center" Margin="0,0,0,10">
-            <Button Content="Ok" Margin="10,5" Padding="25,0" IsDefault="True" FontWeight="Bold"
+            <Button Content="Сохранить" Margin="10,5" Padding="25,0" IsDefault="True" FontWeight="Bold"
                     Command="{Binding OkCommand}"/>
-            <Button Content="Cancel" Margin="10,5" Padding="15,0" IsCancel="True"/>
+            <Button Content="Отмена" Margin="10,5" Padding="15,0" IsCancel="True"/>
         </UniformGrid>
         <Grid Margin="3">
             <Grid.Resources>

@@ -109,6 +109,27 @@ namespace WpfAppCourse.Business.Managers
             .Find(t => t.CarId == carId)
             .ToList();
 
+        public void AddRouteToCar(Route route, int carId)
+        {
+            var car = carRepository.Get(carId);
+            route.CarId = carId;
+            if (route.RouteId <= 0)
+                routeRepository.Create(route);
+            else routeRepository.Update(route);
+            unitOfWork.SaveChanges();
+        }
+        public void RemoveRouteFromCar(Route route, int carId)
+        {
+            var car = carRepository.Get(carId, "Routes");
+            car.Routes.Remove(route);
+            carRepository.Update(car);
+            routeRepository.Update(route);
+            unitOfWork.SaveChanges();
+        }
+        public ICollection<Route> GetRoutesOfCar(int carId) => routeRepository
+            .Find(r => r.CarId == carId)
+            .ToList();
+
         #endregion basic CRUD operations
     }
 }

@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppCourse"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="500" Width="850">
+        Title="{Binding Title}" Height="700" Width="1050">
     <Window.Resources>
         <Style TargetType="Window">
             <Setter Property="Background" Value="Bisque"/>
@@ -127,6 +127,8 @@
                     <Button Command="{Binding DriverWindowCommand}">Водители</Button>
                     <Button Command="{Binding CarWindowCommand}">Автомобили</Button>
                     <Button Command="{Binding ClientWindowCommand}">Заказчики</Button>
+                    <Button Command="{Binding TechnicalStatusWindowCommand}">Осмотры</Button>
+                    <Button Command="{Binding RouteWindowCommand}">Маршруты</Button>
                 </StackPanel>
             </GroupBox>
         </DockPanel>

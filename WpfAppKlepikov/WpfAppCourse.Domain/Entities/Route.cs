@@ -12,6 +12,11 @@ namespace WpfAppCourse.Domain.Entities
         public string Destination { get; set; }
         public int Distance { get; set; }
         // Навигационные свойства
-        public ICollection<Application> Applications { get; set; }
+        public int CarId { get; set; }
+        public Car Car { get; set; }
+
+        //public ICollection<Car> Cars { get; set; }
+        //public ICollection<Application> Applications { get; set; }
+
     }
 }

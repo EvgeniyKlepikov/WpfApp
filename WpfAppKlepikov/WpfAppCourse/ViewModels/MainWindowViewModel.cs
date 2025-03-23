@@ -211,6 +211,32 @@ namespace WpfAppCourse.ViewModels
             {
             };
             if (dialog.ShowDialog() != true) return;
+        }
+        #endregion
+        #region TechnicalStatusWindow
+        private ICommand _technicalStatusWindowCommand;
+        public ICommand TechnicalStatusWindowCommand =>
+        _technicalStatusWindowCommand ??= new
+        RelayCommand(OnTechnicalStatusWindowExecuted);
+        private void OnTechnicalStatusWindowExecuted(object id)
+        {
+            var dialog = new TechnicalStatusWindow
+            {
+            };
+            if (dialog.ShowDialog() != true) return;
+        }
+        #endregion
+        #region RouteWindow
+        private ICommand _routeWindowCommand;
+        public ICommand RouteWindowCommand =>
+        _routeWindowCommand ??= new
+        RelayCommand(OnRouteWindowExecuted);
+        private void OnRouteWindowExecuted(object id)
+        {
+            var dialog = new RouteWindow
+            {
+            };
+            if (dialog.ShowDialog() != true) return;
             //var application = new Application
             //{
             //    CargoName = dialog.CargoName,

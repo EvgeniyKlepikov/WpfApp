@@ -13,10 +13,12 @@ namespace WpfAppCourse.DAL.Repositories
 {
     public class EfRoutesRepository : IRepository<Route>
     {
+        private readonly CargoContext context;
         private readonly DbSet<Route> routes;
 
         public EfRoutesRepository(CargoContext context)
         {
+            this.context = context;
             routes = context.Routes;
         }
 
@@ -29,6 +31,13 @@ namespace WpfAppCourse.DAL.Repositories
         {
             var route = routes.Find(id);
             if (route == null) return false;
+            if (route.CarId > 0)
+            {
+                context.Cars
+                    .Find(route.CarId)
+                    .Routes
+                    .Remove(route);
+            };
             routes.Remove(route);
             return true;
         }

@@ -18,7 +18,7 @@ namespace WpfAppCourse.ViewModels
         CarManager carManager;
         //ApplicationManager applicationManager;
         DriverManager driverManager;
-        private string title = "Автомобили";
+        private string title = "Водители";
         public ObservableCollection<Car> Cars { get; set; }
         //public ObservableCollection<Application> Applications { get; set; }
         public ObservableCollection<Driver> Drivers { get; set; }
