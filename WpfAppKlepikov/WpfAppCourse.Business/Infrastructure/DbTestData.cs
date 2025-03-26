@@ -11,7 +11,7 @@ namespace WpfAppCourse.Business.Infrastructure
 {
     public static class DbTestData
     {
-        public static void SetupData(CarManager carManager)
+        public static void SetupData(CarManager carManager, ClientManager clientManager)
         {
             // Добавление автомобилей
             carManager.AddRange(new List<Car>
@@ -19,64 +19,141 @@ namespace WpfAppCourse.Business.Infrastructure
                 new Car
                 {
                     CarNumber = 5445,
-                    CarWeight = 25,
-                    CarName = "Scania"
+                    CarWeight = 20,
+                    CarName = "Scania 001"
                 },
                 new Car
                 {
                     CarNumber = 6732,
                     CarWeight = 20,
-                    CarName = "Volvo"
+                    CarName = "Volvo 002"
                 },
                 new Car
                 {
                     CarNumber = 3609,
                     CarWeight = 20,
-                    CarName = "DAF"
+                    CarName = "DAF 003"
                 },
                 new Car
                 {
                     CarNumber = 7835,
-                    CarWeight = 25,
-                    CarName = "Mercedes"
+                    CarWeight = 20,
+                    CarName = "Mercedes 004"
                 },
                 new Car
                 {
                     CarNumber = 8864,
                     CarWeight = 20,
-                    CarName = "Tatra"
+                    CarName = "Tatra 005"
                 },
                 new Car
                 {
                     CarNumber = 8344,
-                    CarWeight = 25,
-                    CarName = "Renault"
+                    CarWeight = 20,
+                    CarName = "Renault 006"
                 },
                 new Car
                 {
                     CarNumber = 2254,
                     CarWeight = 20,
-                    CarName = "Volvo"
+                    CarName = "Volvo 007"
                 },
                 new Car
                 {
                     CarNumber = 2757,
                     CarWeight = 20,
-                    CarName = "Scania"
+                    CarName = "Scania 008"
                 },
                 new Car
                 {
                     CarNumber = 4657,
                     CarWeight = 20,
-                    CarName = "Scania"
+                    CarName = "Scania 009"
                 },
                 new Car
                 {
                     CarNumber = 3247,
                     CarWeight = 20,
-                    CarName = "Volvo"
+                    CarName = "Volvo 010"
                 }
             });
+
+            // Добавление клиентов
+            clientManager.AddRange(new List<Client>
+            {
+                new Client
+                {
+                    ClientName = "Аркадий",
+                    ClientSurname = "Старавойтов",
+                    Company = "Рога и Копыта",
+                    ClientDeposit = 2000,
+                },
+                new Client
+                {
+                    ClientName = "Александр",
+                    ClientSurname = "Макась",
+                    Company = "Три толстяка",
+                    ClientDeposit = 5000,
+                },
+                new Client
+                {
+                    ClientName = "Андрей",
+                    ClientSurname = "Новиков",
+                    Company = "Три товарища",
+                    ClientDeposit = 23000,
+                },
+                new Client
+                {
+                    ClientName = "Сергей",
+                    ClientSurname = "Иванов",
+                    Company = "Аврора",
+                    ClientDeposit = 4000,
+                },
+                new Client
+                {
+                    ClientName = "Дмитрий",
+                    ClientSurname = "Маликов",
+                    Company = "Архан",
+                    ClientDeposit = 2000,
+                },
+                new Client
+                {
+                    ClientName = "Максим",
+                    ClientSurname = "Гончарик",
+                    Company = "Дарида",
+                    ClientDeposit = 5000,
+                },
+                new Client
+                {
+                    ClientName = "Стас",
+                    ClientSurname = "Маркевич",
+                    Company = "Евроторг",
+                    ClientDeposit = 6000,
+                },
+                new Client
+                {
+                    ClientName = "Олег",
+                    ClientSurname = "Гранц",
+                    Company = "СтройМИР",
+                    ClientDeposit = 4000,
+                },
+                new Client
+                {
+                    ClientName = "Петр",
+                    ClientSurname = "Райко",
+                    Company = "ПростоКомпания",
+                    ClientDeposit = 3000,
+                },
+                new Client
+                {
+                    ClientName = "Вася",
+                    ClientSurname = "Петров",
+                    Company = "Технопарк",
+                    ClientDeposit = 5000,
+                }
+
+            });
+
 
             var cars = carManager.Cars.ToArray();
             // Добавление заявок

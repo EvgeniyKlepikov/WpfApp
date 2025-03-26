@@ -23,5 +23,15 @@ namespace WpfAppCourse
         {
             InitializeComponent();
         }
+        //public int Deposit
+        //{
+        //    get { return (int)GetValue(DepositProperty); }
+        //    set { SetValue(DepositProperty, value); }
+        //}
+        //public static readonly DependencyProperty DepositProperty =
+        //    DependencyProperty.Register("Deposit", typeof(int),
+        //    typeof(ClientWindow), new
+        //    PropertyMetadata(default(int)));
+
     }
 }

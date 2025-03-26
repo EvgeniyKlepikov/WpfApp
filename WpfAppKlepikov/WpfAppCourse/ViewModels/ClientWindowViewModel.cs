@@ -19,6 +19,18 @@ namespace WpfAppCourse.ViewModels
         private string title = "Заказчики";
         public ObservableCollection<Client> Clients { get; set; }
         public string Title { get => title; set => title = value; }
+        //public int deposit;
+
+        private int _deposit;
+        public int Deposit
+        {
+            get => _deposit;
+            set
+            {
+                Set(ref _deposit, value);
+            }
+        }
+
 
         public ClientWindowViewModel()
         {
@@ -26,7 +38,11 @@ namespace WpfAppCourse.ViewModels
             clientManager = factory.GetClientManager();
             Clients = new ObservableCollection<Client>(clientManager.GetAllClients());
             //if (Clients.Count() > 0)
-            //    OnGetClientExecuted(_selectedClient.ClientId);
+            //    OnGetClientExecuted(Clients[0].ClientId);
+            //if (Cars.Count() > 0)
+            //    OnGetApplicationExecuted(Cars[0].CarId);
+
+            Deposit = 0;
         }
 
         #region Commands
@@ -40,6 +56,7 @@ namespace WpfAppCourse.ViewModels
             var clients = clientManager.GetAllClients();
             foreach (var client in clients)
                 Clients.Add(client);
+            //_selectedClient = Clients[(int)id];
         }
         #endregion Commands
         #region Создание нового заказчика
@@ -58,6 +75,7 @@ namespace WpfAppCourse.ViewModels
                 ClientName = dialog.ClientName,
                 ClientSurname = dialog.ClientSurname,
                 Company = dialog.Company,
+                ClientDeposit = 0,
             };
             clientManager.CreateClient(client);
             Clients.Add(client);
@@ -126,5 +144,39 @@ namespace WpfAppCourse.ViewModels
                 }
             }
         }
+        #region Пополнение баланса
+        private ICommand _addDepositCommand;
+        public ICommand AddDepositCommand =>
+        _addDepositCommand ??= new
+        RelayCommand(OnAddDepositExecuted, AddDepositCanExecute);
+        // Проверка возможности редактирования
+        private bool AddDepositCanExecute(object p) =>
+
+        _selectedClient != null;
+
+        private void OnAddDepositExecuted(object id)
+        {
+            //var dialog = new EditClientWindow
+            //{
+            //};
+            //if (dialog.ShowDialog() != true) return;
+            //var client = new Client
+            //{
+            //    ClientName = dialog.ClientName,
+            //    ClientSurname = dialog.ClientSurname,
+            //    Company = dialog.Company,
+            //    ClientDeposit = 0,
+            //};
+            _selectedClient.ClientDeposit += Deposit;
+
+            clientManager.UpdateClient(_selectedClient);
+            // Обновить список заявок
+            OnGetClientExecuted(_selectedClient.ClientId);
+            //SelectedClient = Clients[_selectedClient.ClientId];
+
+
+        }
+        #endregion
+
     }
 }

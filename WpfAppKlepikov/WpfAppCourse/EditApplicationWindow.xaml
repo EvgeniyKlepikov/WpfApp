@@ -47,10 +47,38 @@
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Дата отправки:"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Пункт назначения:"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Масса:"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Маршрут:"/>
+
             <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding CargoName}"/>
             <DatePicker Grid.Column="1" Grid.Row="1" Margin="3,2,0,2" SelectedDate="{Binding DateOfDispatch}"/>
             <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Destination}" />
             <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding CargoWeight}"/>
+            <ComboBox Grid.Column="1" Grid.Row="4" x:Name="ComboBoxRoutes" ItemsSource="{Binding Routes}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Distance}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <!--<ListView x:Name="Cars" ItemsSource="{Binding Cars}"
+                        SelectedValue="{Binding SelectedCar}" SelectedIndex="0">-->
+                <!--#region Обработка события Selection Canged --><!--
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding GetApplicationsCommand}"
+                                                   CommandParameter="{Binding SelectedCar.CarId}">
+                        </i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                --><!--#endregion--><!--
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding CarName}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+
+
             <!--<Button Grid.Column="1" Grid.Row="4" Content="Выбрать файл" Height="30"
                     Width="Auto" HorizontalAlignment="Right" Margin="0,2,10,27" Padding="5"/>
             <Image Grid.Column="1" Grid.Row="5" Width="100" HorizontalAlignment="Left" Source="{Binding ImagePass}"/>-->

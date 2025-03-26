@@ -11,6 +11,7 @@ namespace WpfAppCourse.Domain.Entities
         public int ClientId { get; set; }
         public string ClientName { get; set; }
         public string ClientSurname { get; set; }
+        public int ClientDeposit { get; set; }
         public string Company { get; set; }
         // Навигационные свойства
         public ICollection<Application> Applications { get; set; }
