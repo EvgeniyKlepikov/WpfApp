@@ -22,6 +22,8 @@ namespace WpfAppCourse
         public LoginWindow()
         {
             InitializeComponent();
+            UsernameTextBox.Text = "admin";
+            PasswordBox.Password = "1111";
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)

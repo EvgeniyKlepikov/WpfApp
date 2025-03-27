@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="Карточка водителя" Height="350" Width="450"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+        Icon="pack://application:,,,/Images/Logo.jpg">
     <DockPanel Background="LightGoldenrodYellow">
         <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0"
                     Text="Информация о водителе" FontWeight="Bold" FontSize="15"/>

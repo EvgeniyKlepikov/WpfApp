@@ -5,10 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppCourse"
         mc:Ignorable="d"
-        Title="Авторизация пользователя" Height="200" Width="300">
+        Title="Авторизация пользователя" Height="240" Width="340"
+        WindowStartupLocation="CenterScreen"
+        FontSize="18"
+        Icon="pack://application:,,,/Images/Logo.jpg">
+    <Window.Resources>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="DarkGoldenrod"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <TextBox Name="UsernameTextBox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0" Width="200" Height="30"/>
-        <PasswordBox Name="PasswordBox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,80,0,0" Width="200" Height="30"/>
+        <!-- Метка для логина -->
+        <Label Content="Логин:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,40,0,0" />
+        <TextBox Name="UsernameTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,40,0,0" Width="200" Height="30" FontSize="18"/>
+        <!-- Метка для пароля -->
+        <Label Content="Пароль:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,80,0,0" />
+        <PasswordBox Name="PasswordBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,80,0,0" Width="200" Height="30" FontSize="18"/>
         <Button Name="loginButton" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40" Width="100" Height="30" Click="loginButton_Click"/>
     </Grid>
 </Window>
