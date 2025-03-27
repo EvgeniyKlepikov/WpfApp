@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -51,12 +52,13 @@ namespace WpfAppCourse.ViewModels
             Routes = new ObservableCollection<Route>(routeManager.GetAllRoutes());
             SelectedRoute = Routes.FirstOrDefault();
             SelectedClient = Clients.FirstOrDefault();
+            SelectedDate = DateTime.Now.AddDays(1);
             if (Cars.Count() > 0)
                 OnGetApplicationExecuted(Cars[0].CarId);
         }
 
-        private double _weight;
-        public double Weight
+        private int _weight;
+        public int Weight
         {
             get => _weight;
             set
@@ -104,6 +106,15 @@ namespace WpfAppCourse.ViewModels
                 Set(ref _transferTotalSum, value);
             }
         }
+        private string _cargoTitle;
+        public string CargoTitle
+        {
+            get => _cargoTitle;
+            set
+            {
+                Set(ref _cargoTitle, value);
+            }
+        }
 
         //public event PropertyChangedEventHandler PropertyChanged;
         //protected virtual void OnPropertyChanged(string propertyName)
@@ -129,6 +140,24 @@ namespace WpfAppCourse.ViewModels
         //        //Set(SelectedClient.ClientDeposit, value);
         //    }
         //}
+        private int _result1;
+        public int Result1
+        {
+            get => _result1;
+            set
+            {
+                Set(ref _result1, value);
+            }
+        }
+        private int _result2;
+        public int Result2
+        {
+            get => _result2;
+            set
+            {
+                Set(ref _result2, value);
+            }
+        }
 
         private Route _selectedRoute;
         public Route SelectedRoute
@@ -137,6 +166,15 @@ namespace WpfAppCourse.ViewModels
             set
             {
                 Set(ref _selectedRoute, value);
+            }
+        }
+        private DateTime _selectedDate;
+        public DateTime SelectedDate
+        {
+            get => _selectedDate;
+            set
+            {
+                Set(ref _selectedDate, value);
             }
         }
         public Car SelectedCar
@@ -175,11 +213,10 @@ namespace WpfAppCourse.ViewModels
         //}
         //#endregion Commands
 
-
         public string Greeting => $"Стоимость перевозки составляет {TransferSum} рублей\n" +
             $"Стоимость страхования составляет {TransferInsurance} рублей\n" +
             $"Общая сумма доставки {TransferTotalSum} рублей";
-        //public string Greeting2 => $"Стоимость страхования составляет {TransferInsurance} рублей";
+        public string Greeting2 => $"Для выбранной даты свободно {Result1} тонн";
 
 
         private ICommand _getCountOfTransferCommand;
@@ -219,13 +256,51 @@ namespace WpfAppCourse.ViewModels
             };
             clientManager.AddPaymentToClient(payment, _selectedClient.ClientId);
             //Applications.Add(application);
-
-
             System.Windows.MessageBox.Show($"Операция проведена успешна!", "Внимание!", System.Windows.MessageBoxButton.OK);
 
         }
+        private ICommand _getPlaceCommand;
+        public ICommand GetPlaceCommand
+            => _getPlaceCommand
+            ??= new RelayCommand(OnGetPlaceExecuted);
+        private void OnGetPlaceExecuted(object id)
+        {
+            int result = 0;
+            //foreach (V item in Application) { }
+            //for (int i = 0;)
+            var applications = applicationManager.GetAllApplications();
+            foreach (var application in applications)
+            {
+                if ((SelectedDate == application.DateOfDispatch) && (SelectedRoute.CarId == application.CarId))
+                {
+                    result += application.CargoWeight;
+                }
+            }
+            Result1 = 20 - result;
+            //OnPropertyChanged(nameof(Result1));
 
+            OnPropertyChanged(nameof(Greeting2));
 
+            //if (SelectedClient.ClientDeposit < TransferTotalSum)
+            //{
+            //    System.Windows.MessageBox.Show($"На балансе {SelectedClient.ClientSurname} недостаточно средств!", "Внимание!", System.Windows.MessageBoxButton.OK);
+            //    return;
+            //}
+            //if (TransferTotalSum == 0) return;
+            //SelectedClient.ClientDeposit -= TransferTotalSum;
+            //clientManager.UpdateClient(SelectedClient);
+            //var payment = new Payment
+            //{
+            //    TotalInsurance = TransferInsurance,
+            //    TotalTrip = TransferSum,
+            //    TotalSum = TransferTotalSum,
+            //    DateOfRegistration = DateTime.Now,
+            //};
+            //clientManager.AddPaymentToClient(payment, _selectedClient.ClientId);
+            ////Applications.Add(application);
+            //System.Windows.MessageBox.Show($"Операция проведена успешна!", "Внимание!", System.Windows.MessageBoxButton.OK);
+
+        }
         #region AddAplication
         private ICommand _newApplicationCommand;
         public ICommand NewApplicationCommand =>
@@ -233,23 +308,53 @@ namespace WpfAppCourse.ViewModels
         RelayCommand(OnNewApplicationExecuted);
         private void OnNewApplicationExecuted(object id)
         {
-            var dialog = new EditApplicationWindow
+            if (Result1 < Weight)
             {
-                DateOfDispatch = DateTime.Now
-            };
-            if (dialog.ShowDialog() != true) return;
+                System.Windows.MessageBox.Show($"Выберите другую дату!", "Внимание!", System.Windows.MessageBoxButton.OK);
+                return;
+            }
+
             var application = new Application
             {
-                CargoName = dialog.CargoName,
-                DateOfDispatch = dialog.DateOfDispatch,
-                Destination = dialog.Destination,
-                CargoWeight = dialog.CargoWeight,
+                CargoName = CargoTitle,
+                DateOfDispatch = SelectedDate,
+                Destination = SelectedRoute.Destination,
+                CargoWeight = Weight,
             };
             carManager.AddApplicationToCar(application,
-            _selectedCar.CarId);
+            SelectedRoute.CarId);
             Applications.Add(application);
+            System.Windows.MessageBox.Show($"Заявка зарегистрирована на {SelectedDate}!", "Внимание!", System.Windows.MessageBoxButton.OK);
+
         }
         #endregion
+
+
+
+        //#region AddAplication
+        //private ICommand _newApplication1Command;
+        //public ICommand NewApplication1Command =>
+        //_newApplicationCommand ??= new
+        //RelayCommand(OnNewApplication1Executed);
+        //private void OnNewApplication1Executed(object id)
+        //{
+        //    var dialog = new EditApplicationWindow
+        //    {
+        //        DateOfDispatch = DateTime.Now
+        //    };
+        //    if (dialog.ShowDialog() != true) return;
+        //    var application = new Application
+        //    {
+        //        CargoName = dialog.CargoName,
+        //        DateOfDispatch = dialog.DateOfDispatch,
+        //        Destination = dialog.Destination,
+        //        CargoWeight = dialog.CargoWeight,
+        //    };
+        //    carManager.AddApplicationToCar(application,
+        //    _selectedCar.CarId);
+        //    Applications.Add(application);
+        //}
+        //#endregion
         #region Выбранная заявка
         private Application _selectedApplication;
         public Application SelectedApplication
