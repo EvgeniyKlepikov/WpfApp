@@ -9,10 +9,13 @@ namespace WpfAppCourse.Domain.Entities
     public class Payment
     {
         public int PaymentId { get; set; }
-        public int Total { get; set; }
-        public bool Status { get; set; }
+        public double TotalInsurance { get; set; }
+        public double TotalTrip { get; set; }
+        public double TotalSum { get; set; }
+        public DateTime DateOfRegistration { get; set; }
+        //public bool Status { get; set; }
         // Навигационные свойства
-        public int ApplicationId { get; set; }
-        public Application Application { get; set; }
+        public int ClientId { get; set; }
+        public Client client { get; set; }
     }
 }

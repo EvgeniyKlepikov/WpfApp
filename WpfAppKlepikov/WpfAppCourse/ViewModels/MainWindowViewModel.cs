@@ -47,14 +47,16 @@ namespace WpfAppCourse.ViewModels
             Cars = new ObservableCollection<Car>(carManager.Cars);
             Applications = new ObservableCollection<Application>();
             Drivers = new ObservableCollection<Driver>();
+            Clients = new ObservableCollection<Client>(clientManager.GetAllClients());
             Routes = new ObservableCollection<Route>(routeManager.GetAllRoutes());
             SelectedRoute = Routes.FirstOrDefault();
+            SelectedClient = Clients.FirstOrDefault();
             if (Cars.Count() > 0)
                 OnGetApplicationExecuted(Cars[0].CarId);
         }
 
-        private int _weight;
-        public int Weight
+        private double _weight;
+        public double Weight
         {
             get => _weight;
             set
@@ -62,8 +64,8 @@ namespace WpfAppCourse.ViewModels
                 Set(ref _weight, value);
             }
         }
-        private int _cost;
-        public int Cost
+        private double _cost;
+        public double Cost
         {
             get => _cost;
             set
@@ -71,7 +73,6 @@ namespace WpfAppCourse.ViewModels
                 Set(ref _cost, value);
             }
         }
-
         private double _transferInsurance;
         public double TransferInsurance
         {
@@ -94,12 +95,40 @@ namespace WpfAppCourse.ViewModels
                 //OnPropertyChanged(nameof(Greeting2));
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
+        private double _transferTotalSum;
+        public double TransferTotalSum
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get => _transferTotalSum;
+            set
+            {
+                Set(ref _transferTotalSum, value);
+            }
         }
+
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //protected virtual void OnPropertyChanged(string propertyName)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
+        private Client _selectedClient;
+        public Client SelectedClient
+        {
+            get => _selectedClient;
+            set
+            {
+                Set(ref _selectedClient, value);
+            }
+        }
+        //private double _clientSum;
+        //public double ClientSum
+        //{
+        //    get => SelectedClient.ClientDeposit;
+        //    set
+        //    {
+        //        //Set(SelectedClient.ClientDeposit, value);
+        //    }
+        //}
 
         private Route _selectedRoute;
         public Route SelectedRoute
@@ -132,9 +161,25 @@ namespace WpfAppCourse.ViewModels
                 Applications.Add(application);
         }
         #endregion Commands
+        //#region Commands
+        //private ICommand _getClientsCommand;
+        //public ICommand GetClientsCommand
+        //    => _getClientsCommand
+        //    ??= new RelayCommand(OnGetClientsExecuted);
+        //private void OnGetClientsExecuted(object id)
+        //{
+        //    Clients.Clear();
+        //    var clients = clientManager.GetAllClients();
+        //    foreach (var client in clients)
+        //        Clients.Add(client);
+        //}
+        //#endregion Commands
 
-        public string Greeting1 => $"Стоимость перевозки составляет {TransferSum} рублей";
-        public string Greeting2 => $"Стоимость страхования составляет {TransferInsurance} рублей";
+
+        public string Greeting => $"Стоимость перевозки составляет {TransferSum} рублей\n" +
+            $"Стоимость страхования составляет {TransferInsurance} рублей\n" +
+            $"Общая сумма доставки {TransferTotalSum} рублей";
+        //public string Greeting2 => $"Стоимость страхования составляет {TransferInsurance} рублей";
 
 
         private ICommand _getCountOfTransferCommand;
@@ -145,12 +190,41 @@ namespace WpfAppCourse.ViewModels
         {
             TransferSum = SelectedRoute.Distance*0.6*Weight*0.8;
             TransferInsurance = Cost * 0.1;
+            TransferTotalSum = TransferSum + TransferInsurance;
             OnPropertyChanged(nameof(TransferInsurance));
             OnPropertyChanged(nameof(TransferSum));
-            OnPropertyChanged(nameof(Greeting1));
-            OnPropertyChanged(nameof(Greeting2));
+            OnPropertyChanged(nameof(Greeting));
+        }
+
+        private ICommand _getPaymentCommand;
+        public ICommand GetPaymentCommand
+            => _getPaymentCommand
+            ??= new RelayCommand(OnGetPaymentExecuted);
+        private void OnGetPaymentExecuted(object id)
+        {
+            if (SelectedClient.ClientDeposit < TransferTotalSum)
+            {
+                System.Windows.MessageBox.Show($"На балансе {SelectedClient.ClientSurname} недостаточно средств!", "Внимание!", System.Windows.MessageBoxButton.OK);
+                return;
+            }
+            if (TransferTotalSum == 0) return;
+            SelectedClient.ClientDeposit -= TransferTotalSum;
+            clientManager.UpdateClient(SelectedClient);
+            var payment = new Payment
+            {
+                TotalInsurance = TransferInsurance,
+                TotalTrip = TransferSum,
+                TotalSum = TransferTotalSum,
+                DateOfRegistration = DateTime.Now,
+            };
+            clientManager.AddPaymentToClient(payment, _selectedClient.ClientId);
+            //Applications.Add(application);
+
+
+            System.Windows.MessageBox.Show($"Операция проведена успешна!", "Внимание!", System.Windows.MessageBoxButton.OK);
 
         }
+
 
         #region AddAplication
         private ICommand _newApplicationCommand;

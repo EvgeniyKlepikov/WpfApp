@@ -86,70 +86,70 @@ namespace WpfAppCourse.Business.Infrastructure
                     ClientName = "Аркадий",
                     ClientSurname = "Старавойтов",
                     Company = "Рога и Копыта",
-                    ClientDeposit = 2000,
+                    ClientDeposit = 2000.0,
                 },
                 new Client
                 {
                     ClientName = "Александр",
                     ClientSurname = "Макась",
                     Company = "Три толстяка",
-                    ClientDeposit = 5000,
+                    ClientDeposit = 5000.0,
                 },
                 new Client
                 {
                     ClientName = "Андрей",
                     ClientSurname = "Новиков",
                     Company = "Три товарища",
-                    ClientDeposit = 23000,
+                    ClientDeposit = 23000.0,
                 },
                 new Client
                 {
                     ClientName = "Сергей",
                     ClientSurname = "Иванов",
                     Company = "Аврора",
-                    ClientDeposit = 4000,
+                    ClientDeposit = 4000.0,
                 },
                 new Client
                 {
                     ClientName = "Дмитрий",
                     ClientSurname = "Маликов",
                     Company = "Архан",
-                    ClientDeposit = 2000,
+                    ClientDeposit = 2000.0,
                 },
                 new Client
                 {
                     ClientName = "Максим",
                     ClientSurname = "Гончарик",
                     Company = "Дарида",
-                    ClientDeposit = 5000,
+                    ClientDeposit = 5000.0,
                 },
                 new Client
                 {
                     ClientName = "Стас",
                     ClientSurname = "Маркевич",
                     Company = "Евроторг",
-                    ClientDeposit = 6000,
+                    ClientDeposit = 6000.0,
                 },
                 new Client
                 {
                     ClientName = "Олег",
                     ClientSurname = "Гранц",
                     Company = "СтройМИР",
-                    ClientDeposit = 4000,
+                    ClientDeposit = 4000.0,
                 },
                 new Client
                 {
                     ClientName = "Петр",
                     ClientSurname = "Райко",
                     Company = "ПростоКомпания",
-                    ClientDeposit = 3000,
+                    ClientDeposit = 3000.0,
                 },
                 new Client
                 {
                     ClientName = "Вася",
                     ClientSurname = "Петров",
                     Company = "Технопарк",
-                    ClientDeposit = 5000,
+                    ClientDeposit = 5000.0,
                 }
 
             });

@@ -21,8 +21,8 @@ namespace WpfAppCourse.ViewModels
         public string Title { get => title; set => title = value; }
         //public int deposit;
 
-        private int _deposit;
-        public int Deposit
+        private double _deposit;
+        public double Deposit
         {
             get => _deposit;
             set
@@ -42,7 +42,7 @@ namespace WpfAppCourse.ViewModels
             //if (Cars.Count() > 0)
             //    OnGetApplicationExecuted(Cars[0].CarId);
 
-            Deposit = 0;
+            Deposit = 0.0;
         }
 
         #region Commands
@@ -75,7 +75,7 @@ namespace WpfAppCourse.ViewModels
                 ClientName = dialog.ClientName,
                 ClientSurname = dialog.ClientSurname,
                 Company = dialog.Company,
-                ClientDeposit = 0,
+                ClientDeposit = 0.0,
             };
             clientManager.CreateClient(client);
             Clients.Add(client);

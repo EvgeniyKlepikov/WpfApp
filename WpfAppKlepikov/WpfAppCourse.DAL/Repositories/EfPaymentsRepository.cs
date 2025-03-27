@@ -31,10 +31,10 @@ namespace WpfAppCourse.DAL.Repositories
         {
             var payment = payments.Find(id);
             if (payment == null) return false;
-            if (payment.ApplicationId > 0)
+            if (payment.ClientId > 0)
             {
-                context.Applications
-                    .Find(payment.ApplicationId)
+                context.Clients
+                    .Find(payment.ClientId)
                     .Payments
                     .Remove(payment);
             };

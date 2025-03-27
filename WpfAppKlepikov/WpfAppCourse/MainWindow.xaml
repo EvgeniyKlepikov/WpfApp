@@ -42,6 +42,7 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
@@ -50,7 +51,19 @@
             <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="200" FontSize="14">
+        <GroupBox Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="2,2,0,2" Height="50">
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding NewApplicationCommand}">Добавить заявку</Button>
+                <Button Command="{Binding EditApplicationCommand}">Редактировать</Button>
+                <Button Command="{Binding DeleteApplicationCommand}">Удалить</Button>
+                <Button Command="{Binding DriverWindowCommand}">Водители</Button>
+                <Button Command="{Binding CarWindowCommand}">Автомобили</Button>
+                <Button Command="{Binding ClientWindowCommand}">Заказчики</Button>
+                <Button Command="{Binding TechnicalStatusWindowCommand}">Осмотры</Button>
+                <Button Command="{Binding RouteWindowCommand}">Маршруты</Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="200" FontSize="16" Grid.Row="1">
             <ListView x:Name="Cars" ItemsSource="{Binding Cars}"
                         SelectedValue="{Binding SelectedCar}" SelectedIndex="0">
                 <!--#region Обработка события Selection Canged -->
@@ -69,17 +82,19 @@
                 </ListView.ItemTemplate>
             </ListView>
         </GroupBox >
-        <GroupBox Header="Калькулятор стоимости перевозки" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14">
+        <GroupBox Header="Калькулятор стоимости перевозки" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" FontSize="16">
             <!--#region Таблица -->
             <!--<Grid DataContext="{Binding SelectedCar}">-->
-            <Grid Height="350">
+            <Grid Height="450">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto" ></RowDefinition>
-                    <RowDefinition Height="Auto" ></RowDefinition>
-                    <RowDefinition Height="Auto" ></RowDefinition>
-                    <RowDefinition Height="Auto" ></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -94,14 +109,32 @@
                           DisplayMemberPath="Destination" SelectedValue="Distance" SelectedItem="{Binding SelectedRoute}" Margin="0,5,10,5" FontSize="20"/>
                 <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Cost}" Margin="0,5,10,5" FontSize="22" VerticalAlignment="Center"/>
                 <Button Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding GetCountOfTransferCommand}" Margin="110,20,110,1" FontSize="18">Рассчитать</Button>
-                <TextBlock Grid.ColumnSpan="2" Grid.Row="4" Text="{Binding Greeting1}" FontSize="20" TextAlignment="Center"/>
-                <TextBlock Grid.ColumnSpan="2" Grid.Row="5" Text="{Binding Greeting2}" FontSize="20" TextAlignment="Center"/>
+                <TextBlock Grid.ColumnSpan="2" Grid.Row="4" Text="{Binding Greeting}" FontSize="20" TextAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="5" Text="Выберите заказчика:" FontSize="20"/>
+                <ComboBox Grid.Column="1" Grid.Row="5" x:Name="ComboBoxClients" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}"
+                          DisplayMemberPath="ClientSurname" Margin="0,5,10,5" FontSize="20"/>
+                    <!--#region Обработка события Selection Canged -->
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding GetClientsCommand}"
+                                                   CommandParameter="{Binding SelectedClient.ClientId}">
+                            </i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>-->
+                    <!--#endregion-->
+                <!--</ComboBox>-->
+                <!--<TextBlock Grid.Column="0" Grid.Row="6" Text="Баланс заказчика (руб):" FontSize="20"/>
+                <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding ClientSum}" Margin="0,5,10,5" FontSize="22" VerticalAlignment="Center"/>-->
+
+                <Button Grid.Row="6" Grid.ColumnSpan="2" Command="{Binding GetPaymentCommand}" Margin="110,20,110,1" FontSize="18">Оплатить</Button>
+
+                <!--<TextBlock Grid.ColumnSpan="2" Grid.Row="5" Text="{Binding Greeting2}" FontSize="20" TextAlignment="Center"/>-->
 
             </Grid>
             <!--#endregion-->
         </GroupBox>
-        <DockPanel Grid.Row="1" Grid.ColumnSpan="3">
-            <GroupBox Header="Список заявок" Width="550" DockPanel.Dock="Left" FontSize="14">
+        <!--<DockPanel Grid.Row="2" Grid.ColumnSpan="3">-->
+            <GroupBox Grid.Row="2" Grid.Column="0" Header="Список заявок" DockPanel.Dock="Left" FontSize="16">
                 <ListView x:Name="Applications" ItemsSource="{Binding Applications}"
                           SelectedItem="{Binding SelectedApplication}">
                     <ListView.ItemTemplate>
@@ -127,7 +160,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </GroupBox>
-            <GroupBox Width="Auto" HorizontalAlignment="Right">
+            <!--<GroupBox Width="Auto" HorizontalAlignment="Right">
                 <StackPanel >
                     <Button Command="{Binding NewApplicationCommand}">Добавить заявку</Button>
                     <Button Command="{Binding EditApplicationCommand}">Редактировать</Button>
@@ -138,7 +171,7 @@
                     <Button Command="{Binding TechnicalStatusWindowCommand}">Осмотры</Button>
                     <Button Command="{Binding RouteWindowCommand}">Маршруты</Button>
                 </StackPanel>
-            </GroupBox>
-        </DockPanel>
+            </GroupBox>-->
+        <!--</DockPanel>-->
     </Grid>
 </Window>

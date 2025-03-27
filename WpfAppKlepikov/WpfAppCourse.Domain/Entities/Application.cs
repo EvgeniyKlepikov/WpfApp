@@ -21,7 +21,7 @@ namespace WpfAppCourse.Domain.Entities
         //public Client Client { get; set; }
         //public int RouteId { get; set; }
         //public Route Route { get; set; }
-        public ICollection<Payment> Payments { get; set; }
+        //public ICollection<Payment> Payments { get; set; }
 
     }
 }

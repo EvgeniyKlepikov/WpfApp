@@ -45,6 +45,27 @@ namespace WpfAppCourse.Business.Managers
             unitOfWork.SaveChanges();
         }
         #endregion basic CRUD operations
+        public void AddPaymentToClient(Payment payment, int clientId)
+        {
+            var client = clientRepository.Get(clientId);
+            payment.ClientId = clientId;
+            if (payment.PaymentId <= 0)
+                paymentRepository.Create(payment);
+            else paymentRepository.Update(payment);
+            unitOfWork.SaveChanges();
+        }
+        public void RemovePaymentFromClient(Payment payment, int clientId)
+        {
+            var client = clientRepository.Get(clientId, "Payments");
+            client.Payments.Remove(payment);
+            //application.CargoWeight = 0;
+            clientRepository.Update(client);
+            paymentRepository.Update(payment);
+            unitOfWork.SaveChanges();
+        }
+        public ICollection<Payment> GetPaymentsOfClient(int clientId) => paymentRepository
+            .Find(p => p.ClientId == clientId)
+            .ToList();
 
     }
 }

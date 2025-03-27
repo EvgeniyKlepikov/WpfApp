@@ -53,13 +53,16 @@
             <DatePicker Grid.Column="1" Grid.Row="1" Margin="3,2,0,2" SelectedDate="{Binding DateOfDispatch}"/>
             <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Destination}" />
             <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding CargoWeight}"/>
-            <ComboBox Grid.Column="1" Grid.Row="4" x:Name="ComboBoxRoutes" ItemsSource="{Binding Routes}">
+            <!--<ComboBox Grid.Column="1" Grid.Row="4" x:Name="ComboBoxRoutes" ItemsSource="{Binding Routes}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Distance}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
-            </ComboBox>
+            </ComboBox>-->
+            <ComboBox Grid.Column="1" Grid.Row="4" x:Name="ComboBoxRoutes1" ItemsSource="{Binding Routes}" SelectedItem="{Binding SelectedClient}"
+                          DisplayMemberPath="Destination" Margin="0,5,10,5" FontSize="20"/>
+
             <!--<ListView x:Name="Cars" ItemsSource="{Binding Cars}"
                         SelectedValue="{Binding SelectedCar}" SelectedIndex="0">-->
                 <!--#region Обработка события Selection Canged --><!--
