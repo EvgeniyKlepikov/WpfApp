@@ -58,16 +58,16 @@
         <GroupBox Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="2,2,0,2" Height="50">
             <StackPanel Orientation="Horizontal">
                 <!--<Button Command="{Binding NewApplicationCommand}">Добавить заявку</Button>-->
-                <Button Command="{Binding EditApplicationCommand}">Редактировать</Button>
-                <Button Command="{Binding DeleteApplicationCommand}">Удалить</Button>
                 <Button Command="{Binding DriverWindowCommand}">Водители</Button>
                 <Button Command="{Binding CarWindowCommand}">Автомобили</Button>
                 <Button Command="{Binding ClientWindowCommand}">Заказчики</Button>
                 <Button Command="{Binding TechnicalStatusWindowCommand}">Осмотры</Button>
                 <Button Command="{Binding RouteWindowCommand}">Маршруты</Button>
+                <Button Command="{Binding EditApplicationCommand}">Редактировать заявку</Button>
+                <Button Command="{Binding DeleteApplicationCommand}">Удалить заявку</Button>
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="200" FontSize="16" Grid.Row="1">
+        <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="200" FontSize="18" Grid.Row="1">
             <ListView x:Name="Cars" ItemsSource="{Binding Cars}"
                         SelectedValue="{Binding SelectedCar}" SelectedIndex="0">
                 <!--#region Обработка события Selection Canged -->
@@ -81,12 +81,24 @@
                 <!--#endregion-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding CarName}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Text="{Binding CarId}" FontSize="16"
+                                               HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                                <TextBlock Text="{Binding CarName}" FontSize="16"
+                                               HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                        <!--<TextBlock Text="{Binding CarName}"/>-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </GroupBox >
-        <GroupBox Header="Оформление заявки на перевозку" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" FontSize="16">
+        <GroupBox Header="Оформление заявки на перевозку" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" FontSize="18">
             <!--#region Таблица -->
             <!--<Grid DataContext="{Binding SelectedCar}">-->
             <Grid Height="650">
@@ -150,7 +162,7 @@
             <!--#endregion-->
         </GroupBox>
         <!--<DockPanel Grid.Row="2" Grid.ColumnSpan="3">-->
-            <GroupBox Grid.Row="2" Grid.Column="0" Header="Список заявок" DockPanel.Dock="Left" FontSize="16">
+            <GroupBox Grid.Row="2" Grid.Column="0" Header="Список заявок" DockPanel.Dock="Left" FontSize="18">
                 <ListView x:Name="Applications" ItemsSource="{Binding Applications}"
                           SelectedItem="{Binding SelectedApplication}">
                     <ListView.ItemTemplate>
@@ -164,9 +176,9 @@
                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                                     <TextBlock Text="{Binding CargoName}"
                                                HorizontalAlignment="Left" Margin="30,0,0,0"/>
-                                    <TextBlock Text="{Binding CargoWeight, StringFormat={}{0:0.0 тонн}}"
+                                    <TextBlock Text="{Binding CargoWeight, StringFormat={}{0:0.0 тонн   }}"
                                                HorizontalAlignment="Left" Margin="30,0,0,0"/>
-                                    <TextBlock Text="{Binding DateOfDispatch, StringFormat={}{0:dd.MM.yyyy дата отправки}}"
+                                    <TextBlock Text="{Binding DateOfDispatch, StringFormat={}{0:dd.MM.yyyy дата отправки   }}"
                                                HorizontalAlignment="Left" Margin="5,0,0,0"/>
                                     <TextBlock Text="{Binding Destination}"
                                                Margin="5,0,0,0"/>

@@ -52,7 +52,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
-            <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="200" FontSize="14">
+            <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="200" FontSize="18">
                 <ListView x:Name="Cars" ItemsSource="{Binding Cars}"
                         SelectedValue="{Binding SelectedCar}" SelectedIndex="0">
                     <!--#region Обработка события Selection Canged -->
@@ -66,12 +66,24 @@
                     <!--#endregion-->
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding CarName}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Text="{Binding CarId}" FontSize="16"
+                                               HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                                <TextBlock Text="{Binding CarName}" FontSize="16"
+                                               HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                        <!--<TextBlock Text="{Binding CarName}"/>-->
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </GroupBox >
-            <GroupBox Header="Параметры автомобиля" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14">
+            <GroupBox Header="Параметры автомобиля" Grid.Column="1" Grid.ColumnSpan="2" FontSize="18">
                 <!--#region Таблица -->
                 <Grid DataContext="{Binding SelectedCar}">
                     <Grid.RowDefinitions>
@@ -94,7 +106,7 @@
             </GroupBox>
         
         <DockPanel Grid.Row="1" Grid.ColumnSpan="3">
-            <GroupBox Header="Список водителей" Width="550" DockPanel.Dock="Left" FontSize="14">
+            <GroupBox Header="Список водителей" Width="550" DockPanel.Dock="Left" FontSize="18">
                 <ListView x:Name="Drivers" ItemsSource="{Binding Drivers}"
                           SelectedItem="{Binding SelectedDriver}">
                     <ListView.ItemTemplate>
@@ -110,12 +122,12 @@
                                                HorizontalAlignment="Left" Margin="30,0,0,0"/>
                                     <TextBlock Text="{Binding DriverSurname}"
                                                HorizontalAlignment="Left" Margin="30,0,0,0"/>
-                                    <TextBlock Text="{Binding DriverAge, StringFormat={}{0:0.0 лет}}"
+                                    <TextBlock Text="{Binding DriverAge, StringFormat={}{0:0 лет   }}"
                                                HorizontalAlignment="Left" Margin="30,0,0,0"/>
-                                    <TextBlock Text="{Binding DateOfAdmission, StringFormat={}{0:dd.MM.yyyy дата отправки}}"
+                                    <TextBlock Text="{Binding DateOfAdmission, StringFormat={}{0:dd.MM.yyyy дата регистрации}}"
                                                HorizontalAlignment="Left" Margin="5,0,0,0"/>
-                                    <TextBlock Text="{Binding DriverExperience}"
-                                               Margin="5,0,0,0"/>
+                                    <!--<TextBlock Text="{Binding DriverExperience}"
+                                               Margin="5,0,0,0"/>-->
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>

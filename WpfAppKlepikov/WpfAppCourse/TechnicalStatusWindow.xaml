@@ -52,7 +52,7 @@
             <!--<ColumnDefinition Width="*"></ColumnDefinition>-->
         </Grid.ColumnDefinitions>
 
-        <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="350" FontSize="14">
+        <GroupBox Header="Список автомобилей" Margin="2" Padding="2" MinWidth="350" FontSize="18">
             <ListView x:Name="Cars" ItemsSource="{Binding Cars}"
                         SelectedValue="{Binding SelectedCar}" SelectedIndex="0">
                 <!--#region Обработка события Selection Canged -->
@@ -66,7 +66,19 @@
                 <!--#endregion-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding CarName}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Text="{Binding CarId}" FontSize="16"
+                                               HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                                <TextBlock Text="{Binding CarName}" FontSize="16"
+                                               HorizontalAlignment="Left" Margin="30,0,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                        <!--<TextBlock Text="{Binding CarName}"/>-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -94,12 +106,12 @@
         </GroupBox>-->
 
         <DockPanel Grid.Row="1" Grid.ColumnSpan="3">
-            <GroupBox Header="Список осмотров" Width="550" DockPanel.Dock="Left" FontSize="14">
+            <GroupBox Header="Список осмотров" Width="550" DockPanel.Dock="Left" FontSize="18">
                 <ListView x:Name="TechnicalStatuses" ItemsSource="{Binding TechnicalStatuses}"
                           SelectedItem="{Binding SelectedTechnicalStatus}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="10">
+                            <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                     <!--<ColumnDefinition Width="*"/>-->
